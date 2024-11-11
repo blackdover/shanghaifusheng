@@ -1,0 +1,16 @@
+debug/backendmanager.o
+debug/eventmanager.o
+debug/eventwindow.o
+debug/game.o
+debug/itemmanager.o
+debug/loading.o
+debug/loginwindow.o
+debug/main.o
+debug/mainwindow.o
+debug/player.o
+debug/start.o
+debug/qrc_txtResource.o
+debug/moc_loading.o
+debug/moc_mainwindow.o
+debug/moc_player.o
+debug/moc_start.o

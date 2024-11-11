@@ -1,0 +1,16 @@
+release/backendmanager.o
+release/eventmanager.o
+release/eventwindow.o
+release/game.o
+release/itemmanager.o
+release/loading.o
+release/loginwindow.o
+release/main.o
+release/mainwindow.o
+release/player.o
+release/start.o
+release/qrc_txtResource.o
+release/moc_loading.o
+release/moc_mainwindow.o
+release/moc_player.o
+release/moc_start.o
