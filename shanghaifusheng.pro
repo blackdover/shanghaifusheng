@@ -21,7 +21,6 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     player.cpp \
-    post.cpp \
     start.cpp \
     uitest.cpp \
     ranking.cpp
@@ -38,7 +37,6 @@ HEADERS += \
     loading.h \
     mainwindow.h \
     player.h \
-    post.h \
     start.h \
     uitest.h \
     ranking.h
@@ -50,7 +48,6 @@ FORMS += \
     hospital.ui \
     loading.ui \
     mainwindow.ui \
-    post.ui \
     start.ui \
     uitest.ui \
     ranking.ui

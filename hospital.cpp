@@ -10,7 +10,6 @@ Hospital::Hospital(Player *player,QWidget *parent)
     ,player(player)
 {
     ui->setupUi(this);
-    setWindowTitle("医院");
     connect(ui->cancelButton, &QPushButton::clicked, this, &Hospital::on_cancelButton_clicked);
 }
 
@@ -36,28 +35,21 @@ void Hospital::setHealth(long long h)
 
 void Hospital::on_cureButton_clicked()
 {
-    if(player->getHealth() == 100)
+    bool ok;
+    long long money=player->getMoney();
+    int amount = QInputDialog::getInt(this,"诊室","您打算打几针？",(100-health),0,(100-health),1,&ok);
+    if (ok)
     {
-        QMessageBox::warning(this,"医生说","侬挺健康，不必要打针！");
-    }
-    else
-    {
-        bool ok;
-        long long money=player->getMoney();
-        int amount = QInputDialog::getInt(this,"诊室","您打算打几针？",(100-health),0,(100-health),1,&ok);
-        if (ok)
+        if(amount*500 <= money)
         {
-            if(amount*500 <= money)
-            {
-                health += amount;
-                updateTipLabel();
-                player->addHealth(amount);
-                player->reduceMoney(amount*500);
-                emit healthChanged(health);
-            }
-            else
-                QMessageBox::warning(this,"护士说","侬口袋里钱不够噻！");
+            health += amount;
+            updateTipLabel();
+            player->addHealth(amount);
+            player->reduceMoney(amount*500);
+            emit healthChanged(health);
         }
+        else
+            QMessageBox::warning(this,"医生说","你兜里钱不够噻！");
     }
 }
 

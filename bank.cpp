@@ -3,7 +3,6 @@
 #include <QLabel>
 #include <QFont>
 #include <QInputDialog>
-#include <QMessageBox>
 #include "player.h"
 
 Bank::Bank(Player *player,QWidget *parent)
@@ -41,41 +40,31 @@ void Bank::updateTipLabel()
 
 void Bank::on_saveButton_clicked()
 {
-    if(player->getMoney() == 0)
-        QMessageBox::warning(this,"柜姐说","侬拿啥来存呢？!");
-    else
+    bool ok;
+    int amount = QInputDialog::getInt(this,"存款","您存多少钱？",myCash,0,myCash,1,&ok);
+    if (ok)
     {
-        bool ok;
-        int amount = QInputDialog::getInt(this,"存款","您存多少钱？",myCash,0,myCash,1,&ok);
-        if (ok)
-        {
-            mySavings += amount;
-            myCash -= amount;
-            updateTipLabel();
-            player->addBankMoney(amount);
-            player->reduceMoney(amount);
-            emit bankMoneyChanged(myCash,mySavings);
-        }
+        mySavings += amount;
+        myCash -= amount;
+        updateTipLabel();
+        player->addBankMoney(amount);
+        player->reduceMoney(amount);
+        emit bankMoneyChanged(myCash,mySavings);
     }
 }
 
 void Bank::on_drawButton_clicked()
 {
-    if(player->getBankMoney() == 0)
-        QMessageBox::warning(this,"柜姐说","侬没钱可取哇！");
-    else
+    bool ok;
+    int amount = QInputDialog::getInt(this,"取款","您取多少钱？",mySavings,0,mySavings,1,&ok);
+    if (ok)
     {
-        bool ok;
-        int amount = QInputDialog::getInt(this,"取款","您取多少钱？",mySavings,0,mySavings,1,&ok);
-        if (ok)
-        {
-            mySavings -= amount;
-            myCash += amount;
-            updateTipLabel();
-            player->addMoney(amount);
-            player->reduceBankMoney(amount);
-            emit bankMoneyChanged(myCash,mySavings);
-        }
+        mySavings -= amount;
+        myCash += amount;
+        updateTipLabel();
+        player->addMoney(amount);
+        player->reduceBankMoney(amount);
+        emit bankMoneyChanged(myCash,mySavings);
     }
 }
 

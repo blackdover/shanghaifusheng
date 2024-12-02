@@ -10,7 +10,6 @@ release/loading.o
 release/main.o
 release/mainwindow.o
 release/player.o
-release/post.o
 release/start.o
 release/uitest.o
 release/ranking.o
@@ -21,7 +20,6 @@ release/moc_hospital.o
 release/moc_loading.o
 release/moc_mainwindow.o
 release/moc_player.o
-release/moc_post.o
 release/moc_start.o
 release/moc_uitest.o
 release/moc_ranking.o

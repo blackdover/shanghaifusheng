@@ -7,7 +7,6 @@
 #include"player.h"
 #include "bank.h"
 #include "hospital.h"
-#include "post.h"
 #include"itemmanager.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -41,7 +40,6 @@ private slots:
 
     void on_bankButton_clicked();
     void on_hospitalButton_clicked();
-    void on_postButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -51,7 +49,6 @@ private:
     ItemManager *itemManager=new ItemManager();
     Bank *bank;
     Hospital *hospital;
-    Post *post;
 
 };
 #endif // MAINWINDOW_H
