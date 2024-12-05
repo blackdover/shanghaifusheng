@@ -32,12 +32,12 @@ void start::on_startbutton_clicked()
 
 void start::on_rankbutton_clicked()
 {
-    if(!rankingwindow)
+    // if(!rankingwindow)
     {
         rankingwindow=new Ranking();
         rankingwindow->show();
     }
-    this->close();
+
 }
 void start::on_connectusbutton_clicked()
 {

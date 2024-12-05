@@ -6,89 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>804</width>
-    <height>652</height>
+    <width>832</width>
+    <height>709</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QTreeWidget" name="ranktreeWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>110</y>
-     <width>660</width>
-     <height>490</height>
+     <x>10</x>
+     <y>60</y>
+     <width>801</width>
+     <height>511</height>
     </rect>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>660</width>
-     <height>490</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>660</width>
-     <height>490</height>
-    </size>
-   </property>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
    <column>
     <property name="text">
      <string>排名</string>
@@ -106,7 +39,7 @@
    </column>
    <column>
     <property name="text">
-     <string>金钱</string>
+     <string>名声</string>
     </property>
    </column>
    <column>
@@ -114,101 +47,93 @@
      <string>健康状况</string>
     </property>
    </column>
-   <item row="0" column="0">
+   <column>
+    <property name="text">
+     <string>称号</string>
+    </property>
+   </column>
+   <item>
     <property name="text">
      <string>1</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="1" column="0">
+   <item>
     <property name="text">
      <string>2</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="2" column="0">
+   <item>
     <property name="text">
      <string>3</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="3" column="0">
+   <item>
     <property name="text">
      <string>4</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="4" column="0">
+   <item>
     <property name="text">
      <string>5</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="5" column="0">
+   <item>
     <property name="text">
      <string>6</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="6" column="0">
+   <item>
     <property name="text">
      <string>7</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="7" column="0">
+   <item>
     <property name="text">
      <string>8</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="8" column="0">
+   <item>
     <property name="text">
      <string>9</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="9" column="0">
+   <item>
     <property name="text">
      <string>10</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
-    </property>
    </item>
-   <item row="10" column="0">
+   <item>
     <property name="text">
      <string>11</string>
     </property>
-    <property name="textAlignment">
-     <set>AlignCenter</set>
+   </item>
+   <item>
+    <property name="text">
+     <string>12</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>13</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>14</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>15</string>
     </property>
    </item>
   </widget>
-  <widget class="QPushButton" name="startButton">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>40</y>
-     <width>131</width>
+     <x>310</x>
+     <y>610</y>
+     <width>161</width>
      <height>51</height>
     </rect>
    </property>
@@ -218,7 +143,7 @@
     </font>
    </property>
    <property name="text">
-    <string>返回</string>
+    <string>OK</string>
    </property>
   </widget>
  </widget>

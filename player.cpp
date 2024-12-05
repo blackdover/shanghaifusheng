@@ -1,8 +1,13 @@
 #include "player.h"
-#include <iostream>
+#include<QDebug>
+#include <QFile>
+#include <QTextStream>
+#include<QString>
+#include<QStringList>
 
 Player::Player()
     : money(5000), bankMoney(0), giveUpMoney(5000), health(60), fame(60) ,bagsize(100),maxbagsize(100){}
+
 
 long long Player::getMoney() const { return money; }
 void Player::addMoney(long long num)

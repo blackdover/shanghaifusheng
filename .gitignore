@@ -1,5 +1,9 @@
 
 shanghaifusheng.pro.user
 *.user
+topperson.cpp
+topperson.h
+*.idx
 /build
+
 

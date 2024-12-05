@@ -21,6 +21,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     player.cpp \
+    rankitem.cpp \
+    rankitemmanager.cpp \
     post.cpp \
     rent.cpp \
     settlement.cpp \
@@ -41,6 +43,8 @@ HEADERS += \
     loading.h \
     mainwindow.h \
     player.h \
+    rankitem.h \
+    rankitemmanager.h \
     post.h \
     rent.h \
     settlement.h \

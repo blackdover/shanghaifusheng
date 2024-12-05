@@ -18,9 +18,11 @@ public:
 private slots:
     void on_begin_clicked();
 
+
 private:
     Ui::loading *ui;
     MainWindow *mainwindow=nullptr;
+
 };
 
 #endif // LOADING_H
