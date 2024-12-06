@@ -11,8 +11,6 @@ start::start(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("上海浮生记");
-    connect(ui->startbutton,&QPushButton::clicked,this,&start::on_startbutton_clicked);
-    connect(ui->connectusbutton,&QPushButton::clicked,this,&start::on_connectusbutton_clicked);
 }
 
 start::~start()
@@ -41,7 +39,7 @@ void start::on_rankbutton_clicked()
 }
 void start::on_connectusbutton_clicked()
 {
-    if(!connectUsWindow)
+    // if(!connectUsWindow)
     {
         connectUsWindow=new connectUs();
         connectUsWindow->show();
