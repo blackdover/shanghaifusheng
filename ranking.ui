@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>832</width>
-    <height>709</height>
+    <width>624</width>
+    <height>455</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,45 +16,84 @@
   <widget class="QTreeWidget" name="ranktreeWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>60</y>
-     <width>801</width>
-     <height>511</height>
+     <x>0</x>
+     <y>0</y>
+     <width>631</width>
+     <height>401</height>
     </rect>
    </property>
    <column>
     <property name="text">
      <string>排名</string>
     </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>名字</string>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>金钱</string>
+     <string>姓名</string>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>名声</string>
+     <string>收益</string>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>健康状况</string>
+     <string>声誉</string>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>健康值</string>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </column>
    <column>
     <property name="text">
      <string>称号</string>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
    </column>
    <item>
     <property name="text">
      <string>1</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </item>
    <item>
@@ -131,10 +170,10 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>610</y>
-     <width>161</width>
-     <height>51</height>
+     <x>260</x>
+     <y>400</y>
+     <width>121</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -143,7 +182,7 @@
     </font>
    </property>
    <property name="text">
-    <string>OK</string>
+    <string>返回</string>
    </property>
   </widget>
  </widget>
