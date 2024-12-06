@@ -6,8 +6,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QtGlobal>
-ItemManager::ItemManager() {}
 
+ItemManager::ItemManager() {}
 
 bool ItemManager::loadItemsFromFile(const QString& filename) {
     QFile file(filename);
