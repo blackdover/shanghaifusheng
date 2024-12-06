@@ -6,7 +6,12 @@
 #include"mainwindow.h"
 #include<qstring.h>
 #include <QInputDialog>
-
+#include"ranking.h"
+#include <QFile>
+#include <QTextStream>
+#include <QDebug>
+#include<qdir.h>
+#include <QCoreApplication>
 namespace Ui {
 class settlement;
 }
@@ -25,6 +30,7 @@ private slots:
     void on_leave_clicked();
     void setTitle(Player *player);
     void inputName();
+    void scoreAdd();
 private:
     Ui::settlement *ui;
     MainWindow *mainwindow;

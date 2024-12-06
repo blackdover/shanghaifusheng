@@ -8,8 +8,11 @@ settlement::settlement(MainWindow *main,QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("结算画面（此处应有攒劲的小曲）");
+
     setWindowIcon(QIcon(":/res/icon.png"));
+
     inputName();
+
     Player *p=mainwindow->getPlayer();
     money = p->getMoney()+p->getBankMoney()-p->getGiveUpMoney();
     health=p->getHealth();
@@ -20,6 +23,8 @@ settlement::settlement(MainWindow *main,QWidget *parent)
     ui->health->setText(QString::number(health));
     ui->fame->setText(QString::number(fame));
     setTitle(p);
+
+    scoreAdd();
 }
 
 settlement::~settlement()
@@ -41,8 +46,31 @@ void settlement::inputName()
 
 void settlement::on_torank_clicked()
 {
-
+    Ranking *r = new Ranking();
+    r->show();
 }
+
+void settlement::scoreAdd()
+{
+    QString appDir = QCoreApplication::applicationDirPath();
+    QString filePath = QDir(appDir).filePath("res/score.txt");
+
+    qDebug() << "文件路径：" << filePath;  // 输出文件路径以调试
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::Append | QIODevice::Text)) {
+        qWarning() << "无法打开文件：" << filePath;
+        qWarning() << "错误原因：" << file.errorString();
+        return;
+    }
+
+    QTextStream out(&file);
+    out << name << " " << money << " " << health << " " << fame << " " << title << "\n";
+    file.close();
+
+    qDebug() << "数据已成功添加到文件：" << filePath;
+}
+
 
 
 void settlement::on_newgame_clicked()
@@ -65,7 +93,6 @@ void settlement::setTitle(Player *player)
     long long money = player->getMoney();
     int health = player->getHealth();
     int fame = player->getFame();
-    QString title;
 
     if (money > 1000000000) {
         title = "传说中的财富之王";
