@@ -17,6 +17,9 @@
 #include"uitest.h"
 #include"settlement.h"
 #include"stdmessagebox.h"
+
+class event;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , daytime(1)
@@ -97,48 +100,83 @@ void MainWindow::on_playermoney_overflow()
 }
 void MainWindow::refreshItemsInMarket(int count)
 {
-    // 清空当前的物品列表
     ui->itemWidget->clear();
 
-    // 获取所有物品
     ItemManager itemManager;
 
     if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
         qDebug() << "Failed to load items from file. Using default items.";
     }
 
-    // 获取所有物品列表
     const auto& allItems = itemManager.getAllItems();
 
-    // 计算实际显示数量（确保不超过物品的总数量）
     int displayCount = std::min(count, static_cast<int>(allItems.size()));
 
-    // 创建一个索引列表，包含所有物品的索引
     QVector<int> indices;
     for (long long unsigned int i = 0; i < allItems.size(); ++i) {
         indices.append(i);
     }
 
-    // 使用 std::random_device 和 std::mt19937 来打乱索引
-    std::random_device rd; // 获取一个随机数种子
-    std::mt19937 g(rd());  // 使用这个种子初始化随机数生成器
+    std::random_device rd;
+    std::mt19937 g(rd());
 
-    // 随机打乱索引列表
     std::shuffle(indices.begin(), indices.end(), g);
 
-    // 随机抽取并添加到 QTreeWidget
     for (int i = 0; i < displayCount; ++i) {
-        const auto& item = allItems[indices[i]];  // 随机选择一个商品
+        const auto& item = allItems[indices[i]];
 
         QString itemName = QString::fromStdString(item.getName());
         long long nowPrice = item.generatePrice();
 
-        // 创建 QTreeWidgetItem
         QTreeWidgetItem* treeItem = new QTreeWidgetItem();
-        treeItem->setText(0, itemName);                  // 第一列：商品名
-        treeItem->setText(1, QString::number(nowPrice)); // 第二列：价格
+        treeItem->setText(0, itemName);
+        treeItem->setText(1, QString::number(nowPrice));
 
-        // 添加到 QTreeWidget
+        ui->itemWidget->addTopLevelItem(treeItem);
+    }
+}
+//随机事件发生时应该调用的函数
+void MainWindow::refreshItemsInMarket(int count, const QString& excludeName)
+{
+    ui->itemWidget->clear();
+
+    ItemManager itemManager;
+
+    if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
+        qDebug() << "Failed to load items from file. Using default items.";
+    }
+
+    const auto& allItems = itemManager.getAllItems();
+
+    QVector<Item> filteredItems;
+    for (const auto& item : allItems) {
+        if (QString::fromStdString(item.getName()) != excludeName) {
+            filteredItems.append(item);
+        }
+    }
+
+    int displayCount = std::min(count, static_cast<int>(filteredItems.size()));
+
+    QVector<int> indices;
+    for (int i = 0; i < filteredItems.size(); ++i) {
+        indices.append(i);
+    }
+
+    std::random_device rd;
+    std::mt19937 g(rd());
+
+    std::shuffle(indices.begin(), indices.end(), g);
+
+    for (int i = 0; i < displayCount; ++i) {
+        const auto& item = filteredItems[indices[i]];
+
+        QString itemName = QString::fromStdString(item.getName());
+        long long nowPrice = item.generatePrice();
+
+        QTreeWidgetItem* treeItem = new QTreeWidgetItem();
+        treeItem->setText(0, itemName);
+        treeItem->setText(1, QString::number(nowPrice));
+
         ui->itemWidget->addTopLevelItem(treeItem);
     }
 }
@@ -327,6 +365,7 @@ void MainWindow::nextday()
     if(daytime==40)
     {
         QMessageBox::information(this,"提示",QString("你明天就要回家啦，记得把背包里的东西清理掉，不然只能分给乡亲们了"));
+        refreshItemsInMarket(10);
     }
     updateDate();
 }
@@ -498,6 +537,11 @@ void MainWindow::on_newgame_triggered()
     main->show();
     this->close();
 }
+
+class event//随机事件类
+{
+
+};
 
 // void MainWindow::on_addmoney_clicked()
 // {

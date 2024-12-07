@@ -39,6 +39,7 @@ private slots:
 
     void addItemToBag(QString itemName,long long nowPrice,int quantity);
     void refreshItemsInMarket(int count);
+    void refreshItemsInMarket(int count, const QString& excludeName);
     void on_lujiazuiplace_clicked();
     void updateBagSpaceDisplay();
     void updateDate();
