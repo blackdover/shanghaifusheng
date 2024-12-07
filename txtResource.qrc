@@ -4,5 +4,6 @@
         <file>res/qrcode.png</file>
         <file>res/score.txt</file>
         <file>res/icon.png</file>
+        <file>res/event.txt</file>
     </qresource>
 </RCC>
