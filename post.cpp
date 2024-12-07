@@ -38,7 +38,8 @@ void Post::on_payButton_clicked()
     else
     {
         bool ok;
-        int myCash = player->getGiveUpMoney();
+        int myCash = player->getMoney();
+        // int needCash=player->getGiveUpMoney();
         int amount = QInputDialog::getInt(this,"信封","您打算还多少？",myCash,0,myCash,1,&ok);
         if(ok)
         {

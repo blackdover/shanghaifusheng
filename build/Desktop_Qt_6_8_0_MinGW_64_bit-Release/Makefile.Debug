@@ -205,6 +205,7 @@ debug/qrc_txtResource.cpp: ../../txtResource.qrc \
 		../../res/items.txt \
 		../../res/qrcode.png \
 		../../res/score.txt \
+		../../res/event.txt \
 		../../res/icon.png
 	E:\qt\6.8.0\mingw_64\bin\rcc.exe -name txtResource --no-zstd ..\..\txtResource.qrc -o debug\qrc_txtResource.cpp
 
