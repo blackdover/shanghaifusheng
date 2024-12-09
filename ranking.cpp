@@ -18,12 +18,10 @@ Ranking::Ranking(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // 先调整所有列的宽度以适应内容
     for (int i = 0; i < ui->ranktreeWidget->columnCount(); ++i) {
         ui->ranktreeWidget->resizeColumnToContents(i);
     }
 
-    // 然后指定某一列（例如最后一列）进行拉伸
     ui->ranktreeWidget->header()->setSectionResizeMode(1, QHeaderView::Stretch);
     ui->ranktreeWidget->header()->setSectionResizeMode(2, QHeaderView::Stretch);
     // ui->ranktreeWidget->header()->setSectionResizeMode(3, QHeaderView::Stretch);
@@ -46,17 +44,15 @@ Ranking::Ranking(QWidget *parent)
             dir.mkpath(QCoreApplication::applicationDirPath() + "/res");
         }
 
-        // 从资源文件读取默认数据
         QFile resourceFile(":/res/score.txt");
         if (resourceFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QTextStream in(&resourceFile);
-            QString defaultData = in.readAll();  // 读取资源文件中的数据
+            QString defaultData = in.readAll();
 
-            // 创建文件并写入默认数据
             if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
                 QTextStream out(&file);
                 out << defaultData;  // 将数据写入新文件
-                file.close();  // 关闭文件
+                file.close();
 
                 qDebug() << "分数文件已创建，并初始化为默认数据。";
             } else {
@@ -81,7 +77,6 @@ Ranking::Ranking(QWidget *parent)
 
     std::vector<rankItem> rankItems = rankItemManager.getAllElements();
 
-    // 根据金钱从大到小排序
     std::sort(rankItems.begin(), rankItems.end(), [](const rankItem& a, const rankItem& b) {
         return a.getMoney() > b.getMoney();
     });
@@ -97,25 +92,22 @@ Ranking::Ranking(QWidget *parent)
         // 创建 QTreeWidgetItem
         QTreeWidgetItem* treeItem = new QTreeWidgetItem();
         treeItem->setText(0,QString::number(rank));
-        treeItem->setText(1, rankPerson);                  // 第二列：人名
-        treeItem->setText(2, QString::number(ownMoney));// 第三列：金钱
-        treeItem->setText(3, QString::number(healthState));//健康
-        treeItem->setText(4, QString::number(fameState));//名声
+        treeItem->setText(1, rankPerson);
+        treeItem->setText(2, QString::number(ownMoney));
+        treeItem->setText(3, QString::number(healthState));
+        treeItem->setText(4, QString::number(fameState));
         treeItem->setText(5, title);
 
-        // 设置字体大小
-        QFont font = treeItem->font(0);  // 获取第一列（可以选择其他列）的字体
-        font.setPointSize(10);            // 设置字体大小为 12
-        treeItem->setFont(0, font);       // 设置第一列的字体
+        QFont font = treeItem->font(0);
+        font.setPointSize(10);
+        treeItem->setFont(0, font);
 
-        // 为其他列设置字体
-        treeItem->setFont(1, font);       // 第二列
-        treeItem->setFont(2, font);       // 第三列
-        treeItem->setFont(3, font);       // 第四列
-        treeItem->setFont(4, font);       // 第五列
-        treeItem->setFont(5, font);       // 第六列
+        treeItem->setFont(1, font);
+        treeItem->setFont(2, font);
+        treeItem->setFont(3, font);
+        treeItem->setFont(4, font);
+        treeItem->setFont(5, font);
 
-        // 添加到 QTreeWidget
         ui->ranktreeWidget->addTopLevelItem(treeItem);
         rank++;
     }

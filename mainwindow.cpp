@@ -17,7 +17,8 @@
 #include"uitest.h"
 #include"settlement.h"
 #include"stdmessagebox.h"
-
+#include"help.h"
+#include"sudomodel.h"
 class event;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -548,4 +549,19 @@ class event//随机事件类
 // {
 //         player->addMoney(1000000);
 // }
+
+
+void MainWindow::on_seehelp_triggered()
+{
+    doc = new help();
+    doc->show();
+}
+
+
+void MainWindow::on_sudomodel_triggered()
+{
+    sudo = new sudomodel();
+    sudo->setPlayer(player);
+    sudo->show();
+}
 

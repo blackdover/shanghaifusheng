@@ -11,6 +11,8 @@
 #include "rent.h"
 #include"itemmanager.h"
 #include<qmessagebox.h>
+#include"help.h"
+#include"sudomodel.h"
 QT_BEGIN_NAMESPACE
 
 namespace Ui {
@@ -66,6 +68,10 @@ private slots:
 
     // void on_addmoney _clicked();
 
+    void on_seehelp_triggered();
+
+    void on_sudomodel_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTreeWidget *itemWidget;
@@ -79,5 +85,7 @@ private:
     int clickCount; //抖音按钮计数
     int bookbuy;
     QMessageBox stdmessagebox;
+    help *doc=nullptr;
+    sudomodel *sudo=nullptr;
 };
 #endif // MAINWINDOW_H
