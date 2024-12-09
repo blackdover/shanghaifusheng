@@ -16,11 +16,11 @@ uitest::uitest(MainWindow *main,QWidget *parent)
     money = p->getMoney()+p->getBankMoney()-p->getGiveUpMoney();
     health=p->getHealth();
     fame=p->getFame();
-    ui->name->setText(name);
-    ui -> name -> setAlignment(Qt::AlignCenter);
-    ui->money->setText(QString::number(money));
-    ui->health->setText(QString::number(health));
-    ui->fame->setText(QString::number(fame));
+    // ui->name->setText(name);
+    // ui -> name -> setAlignment(Qt::AlignCenter);
+    // ui->money->setText(QString::number(money));
+    // ui->health->setText(QString::number(health));
+    // ui->fame->setText(QString::number(fame));
     setTitle(p);
 }
 
@@ -103,5 +103,5 @@ void uitest::setTitle(Player *player)
         title = "无名的冒险者";
     }
 
-    ui->title->setText(title);
+    // ui->title->setText(title);
 }
