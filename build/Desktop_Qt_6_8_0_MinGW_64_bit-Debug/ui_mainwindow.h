@@ -33,6 +33,8 @@ class Ui_MainWindow
 {
 public:
     QAction *newgame;
+    QAction *seehelp;
+    QAction *sudomodel;
     QWidget *centralwidget;
     QPushButton *sell;
     QWidget *layoutWidget;
@@ -78,10 +80,10 @@ public:
     QLabel *label_6;
     QLabel *label_7;
     QWidget *gameover;
+    QStatusBar *statusbar;
     QMenuBar *menubar;
     QMenu *menu;
     QMenu *menu_2;
-    QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -90,6 +92,10 @@ public:
         MainWindow->resize(637, 461);
         newgame = new QAction(MainWindow);
         newgame->setObjectName("newgame");
+        seehelp = new QAction(MainWindow);
+        seehelp->setObjectName("seehelp");
+        sudomodel = new QAction(MainWindow);
+        sudomodel->setObjectName("sudomodel");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         sell = new QPushButton(centralwidget);
@@ -311,6 +317,9 @@ public:
         bagWidget->raise();
         label_6->raise();
         label_7->raise();
+        statusbar = new QStatusBar(MainWindow);
+        statusbar->setObjectName("statusbar");
+        MainWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 637, 18));
@@ -319,13 +328,12 @@ public:
         menu_2 = new QMenu(menubar);
         menu_2->setObjectName("menu_2");
         MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName("statusbar");
-        MainWindow->setStatusBar(statusbar);
 
         menubar->addAction(menu->menuAction());
         menubar->addAction(menu_2->menuAction());
         menu->addAction(newgame);
+        menu_2->addAction(seehelp);
+        menu_2->addAction(sudomodel);
 
         retranslateUi(MainWindow);
 
@@ -336,6 +344,8 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         newgame->setText(QCoreApplication::translate("MainWindow", "\346\226\260\346\270\270\346\210\217", nullptr));
+        seehelp->setText(QCoreApplication::translate("MainWindow", "\346\237\245\347\234\213\345\270\256\345\212\251\346\226\207\346\241\243", nullptr));
+        sudomodel->setText(QCoreApplication::translate("MainWindow", "\347\245\236\347\247\230\346\214\211\351\222\256", nullptr));
         sell->setText(QCoreApplication::translate("MainWindow", "<=\345\215\226\345\207\272", nullptr));
         bankButton->setText(QCoreApplication::translate("MainWindow", "\351\223\266\350\241\214", nullptr));
         hospitalButton->setText(QCoreApplication::translate("MainWindow", "\345\214\273\351\231\242", nullptr));

@@ -3,6 +3,7 @@ release/bank.o
 release/connectus.o
 release/eventmanager.o
 release/eventwindow.o
+release/help.o
 release/hospital.o
 release/item.o
 release/itemmanager.o
@@ -18,10 +19,12 @@ release/settlement.o
 release/start.o
 release/ranking.o
 release/stdmessagebox.o
+release/sudomodel.o
 release/uitest.o
 release/qrc_txtResource.o
 release/moc_bank.o
 release/moc_connectus.o
+release/moc_help.o
 release/moc_hospital.o
 release/moc_loading.o
 release/moc_mainwindow.o
@@ -31,4 +34,5 @@ release/moc_rent.o
 release/moc_settlement.o
 release/moc_start.o
 release/moc_ranking.o
+release/moc_sudomodel.o
 release/moc_uitest.o

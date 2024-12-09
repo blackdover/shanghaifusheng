@@ -3,6 +3,7 @@ debug/bank.o
 debug/connectus.o
 debug/eventmanager.o
 debug/eventwindow.o
+debug/help.o
 debug/hospital.o
 debug/item.o
 debug/itemmanager.o
@@ -18,10 +19,12 @@ debug/settlement.o
 debug/start.o
 debug/ranking.o
 debug/stdmessagebox.o
+debug/sudomodel.o
 debug/uitest.o
 debug/qrc_txtResource.o
 debug/moc_bank.o
 debug/moc_connectus.o
+debug/moc_help.o
 debug/moc_hospital.o
 debug/moc_loading.o
 debug/moc_mainwindow.o
@@ -31,4 +34,5 @@ debug/moc_rent.o
 debug/moc_settlement.o
 debug/moc_start.o
 debug/moc_ranking.o
+debug/moc_sudomodel.o
 debug/moc_uitest.o

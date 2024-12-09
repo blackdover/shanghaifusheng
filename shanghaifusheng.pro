@@ -14,6 +14,7 @@ SOURCES += \
     connectus.cpp \
     eventmanager.cpp \
     eventwindow.cpp \
+    help.cpp \
     hospital.cpp \
     item.cpp \
     itemmanager.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
     start.cpp \
     ranking.cpp \
     stdmessagebox.cpp \
+    sudomodel.cpp \
     uitest.cpp
 
 HEADERS += \
@@ -37,6 +39,7 @@ HEADERS += \
     connectus.h \
     eventmanager.h \
     eventwindow.h \
+    help.h \
     hospital.h \
     item.h \
     itemmanager.h \
@@ -51,12 +54,14 @@ HEADERS += \
     start.h \
     ranking.h \
     stdmessagebox.h \
+    sudomodel.h \
     uitest.h
 
 
 FORMS += \
     bank.ui \
     connectus.ui \
+    help.ui \
     hospital.ui \
     loading.ui \
     mainwindow.ui \
@@ -65,6 +70,7 @@ FORMS += \
     settlement.ui \
     start.ui \
     ranking.ui \
+    sudomodel.ui \
     uitest.ui
 
 # Default rules for deployment.
