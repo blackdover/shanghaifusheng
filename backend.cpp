@@ -204,7 +204,7 @@ void backend::on_editconfirm_clicked()
 }
 
 
-void backend::onItemSelected(QTreeWidgetItem* item, int column)
+void backend::onItemSelected(QTreeWidgetItem* item)
 {
     if (!item)
         return;

@@ -29,7 +29,7 @@ private:
     QTreeWidget* itemWidget;
     void loadItemsToTree();
     void addItemToTree(const Item& item);
-    void onItemSelected(QTreeWidgetItem* item, int column);
+    void onItemSelected(QTreeWidgetItem* item);
 };
 
 #endif // BACKEND_H
