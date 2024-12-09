@@ -46,3 +46,10 @@ void start::on_connectusbutton_clicked()
     }
 }
 
+
+void start::on_gotoback_clicked()
+{
+    backe=new backend();
+    backe->show();
+}
+
