@@ -13,6 +13,7 @@
 #include<qmessagebox.h>
 #include"help.h"
 #include"sudomodel.h"
+#include"backend.h"
 QT_BEGIN_NAMESPACE
 
 namespace Ui {

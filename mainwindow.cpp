@@ -17,8 +17,6 @@
 #include"uitest.h"
 #include"settlement.h"
 #include"stdmessagebox.h"
-#include"help.h"
-#include"sudomodel.h"
 class event;
 
 MainWindow::MainWindow(QWidget *parent)
