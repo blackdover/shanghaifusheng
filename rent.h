@@ -18,15 +18,10 @@ public:
 
 private slots:
     void on_leaveButton_clicked();
-
     void on_oneButton_clicked();
-
     void on_twoButton_clicked();
-
     void on_threeButton_clicked();
-
     void on_fourButton_clicked();
-
     void on_fiveButton_clicked();
 
 private:

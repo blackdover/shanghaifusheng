@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     updatePlayerUI();
 
-//背包列宽设置
+//背包列宽
     bagWidget->header()->setSectionResizeMode(0, QHeaderView::Fixed);
     bagWidget->setColumnWidth(0, 105);
 
@@ -68,8 +68,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     bagWidget->header()->setSectionResizeMode(2, QHeaderView::Stretch);
 
-
-//商品栏列宽设置
+//商品栏列宽
     itemWidget->header()->setSectionResizeMode(QHeaderView::Stretch); // 所有列拉伸
     itemWidget->header()->resizeSection(0, 5); // 第1列权重为2
     itemWidget->header()->resizeSection(1, 5); // 第2列权重为3
@@ -135,7 +134,7 @@ void MainWindow::refreshItemsInMarket(int count)
         ui->itemWidget->addTopLevelItem(treeItem);
     }
 }
-//随机事件发生时应该调用的函数
+//随机事件发生时应该调用
 void MainWindow::refreshItemsInMarket(int count, const QString& excludeName)
 {
     ui->itemWidget->clear();
@@ -181,14 +180,14 @@ void MainWindow::refreshItemsInMarket(int count, const QString& excludeName)
     }
 }
 
-// 更新背包剩余空间显示的函数
+// 更新背包剩余空间
 void MainWindow::updateBagSpaceDisplay()
 {
-    // 计算背包剩余空间比例
+    // 计算比例
     int bagSize = player->getBagSize();
-    int maxBagSize = player->getMaxBagSize();  // 假设你有一个函数返回最大背包容量
+    int maxBagSize = player->getMaxBagSize();
 
-    // 更新 bagWidget 的第三列标题
+    // 更新 bagWidget的第三列标题
     ui->bagWidget->headerItem()->setText(2, QString("数量:%1/%2").arg(maxBagSize-bagSize).arg(maxBagSize));
 }
 
@@ -220,7 +219,7 @@ void MainWindow::on_buy_clicked()
         return;
     }
 
-    // 如果银行里的钱足够购买
+    // 如果现金不够但银行里的足够购买
     if (player->getBankMoney() >= nowPrice&&player->getMoney()<nowPrice) {
         QMessageBox::warning(this, "提示", "银行里的钱足够购买，请去取钱！");
         return;
@@ -239,7 +238,7 @@ void MainWindow::on_buy_clicked()
                                         maxQuantity, 1, maxQuantity, 1, &ok);
 
     if (!ok || quantity <= 0) {
-        return; // 用户取消或输入无效
+        return;
     }
     player->setBagSize(player->getBagSize()-quantity);
     // 更新到 bagwidget
@@ -248,11 +247,13 @@ void MainWindow::on_buy_clicked()
     // 扣除玩家的钱
     player->reduceMoney( nowPrice * quantity);
     updateBagSpaceDisplay();
-    ui->playermoney->display(QString::number(player->getMoney()));
-    ui->playerbankmoney->display(QString::number(player->getBankMoney()));
-    ui->playergiveupmoney->display(QString::number(player->getGiveUpMoney()));
-    ui->playerhealth->display(QString::number(player->getHealth()));
-    ui->playerfame->display(QString::number(player->getFame()));
+    updatePlayerUI();
+
+    // ui->playermoney->display(QString::number(player->getMoney()));
+    // ui->playerbankmoney->display(QString::number(player->getBankMoney()));
+    // ui->playergiveupmoney->display(QString::number(player->getGiveUpMoney()));
+    // ui->playerhealth->display(QString::number(player->getHealth()));
+    // ui->playerfame->display(QString::number(player->getFame()));
 
 
     // stdmessagebox::information(this, "成功", QString("成功购买 %1 个 %2！").arg(quantity).arg(nowName));
@@ -261,16 +262,16 @@ void MainWindow::on_buy_clicked()
 
 void MainWindow::on_sell_clicked()
 {
-    // 获取当前选中的物品（bagWidget 中的物品）
+    // 获取当前选中的物品
     QTreeWidgetItem *selectedItem = ui->bagWidget->currentItem();
     if (!selectedItem) {
         QMessageBox::warning(this, "警告", "请选择一个物品！");
         return;
     }
 
-    QString itemName = selectedItem->text(0);      // 商品名
-    // long long ownedPrice = selectedItem->text(1).toLongLong(); // 持有时价格
-    int ownedQuantity = selectedItem->text(2).toInt();         // 持有数量
+    QString itemName = selectedItem->text(0);
+    // long long ownedPrice = selectedItem->text(1).toLongLong();
+    int ownedQuantity = selectedItem->text(2).toInt();
 
     // 弹出输入框，默认值为拥有的最大数量
     bool ok;
@@ -279,7 +280,7 @@ void MainWindow::on_sell_clicked()
                                             ownedQuantity, 1, ownedQuantity, 1, &ok);
 
     if (!ok) {
-        return; // 用户取消操作
+        return;
     }
 
     // 检查卖出数量是否合理
@@ -308,7 +309,7 @@ void MainWindow::on_sell_clicked()
         return;
     }
 
-    // 获取当前收购的价格
+    // 获取当前的价格
     long long sellPrice = buyerItem->text(1).toLongLong();
 
     // 增加玩家的钱

@@ -20,9 +20,7 @@ public:
 private slots:
 
     void on_startbutton_clicked();
-
     void on_rankbutton_clicked();
-
     void on_connectusbutton_clicked();
 
 

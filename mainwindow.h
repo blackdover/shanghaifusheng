@@ -54,24 +54,17 @@ private slots:
     void showGameOverMessage();
 
     void on_hongkouplace_clicked();
-
     void on_baoshanplace_clicked();
-
     void on_qingpuplace_clicked();
-
     void on_pudongplace_clicked();
-
     void on_linggangplace_clicked();
-
     void on_jinshanplace_clicked();
-
     void on_songjiangplace_clicked();
-
     void on_jiadingplace_clicked();
 
     void on_newgame_triggered();
 
-    // void on_addmoney_clicked();
+    // void on_addmoney _clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -83,7 +76,7 @@ private:
     Hospital *hospital;
     Post *post;
     Rent *rent;
-    int clickCount; //抖音按钮
+    int clickCount; //抖音按钮计数
     int bookbuy;
     QMessageBox stdmessagebox;
 };

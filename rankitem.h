@@ -7,10 +7,8 @@ class rankItem
 {
 public:
     rankItem(const std::string& Playername, long long money, long long health,long long fame,const std::string& Playertitle);
-    // 构造函数
     std::string getPlayername() const;
     long long getMoney() const;
-
     long long getHealth() const;
     long long getFame() const;
     std::string getPlayertitle() const;

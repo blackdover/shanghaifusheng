@@ -34,27 +34,25 @@ void Post::on_payButton_clicked()
     {
         QMessageBox::warning(this,"村长说","侬想做慈善吗？！");
     }
-
     else
     {
         bool ok;
         int myCash = player->getMoney();
-        // int needCash=player->getGiveUpMoney();
-        int amount = QInputDialog::getInt(this,"信封","您打算还多少？",myCash,0,myCash,1,&ok);
-        if(ok)
+        int needCash=player->getGiveUpMoney();
+        int amount = QInputDialog::getInt(this,"信封","您打算还多少？",std::min(needCash,myCash),0,std::min(needCash,myCash),1,&ok);
+        if (ok)
         {
-            if(player->getGiveUpMoney() > amount)
+            player->reduceMoney(amount);
+            player->reduceGiveUpMoney(amount);
+
+            if (player->getGiveUpMoney() == 0)
             {
-                player->reduceMoney(amount);
-                player->reduceGiveUpMoney(amount);
+                QMessageBox::information(this, "村长说", "侬这小子还真还清了！");
             }
             else
             {
-                player->reduceMoney(player->getGiveUpMoney());
-                player->reduceGiveUpMoney(player->getGiveUpMoney());
-                QMessageBox::information(this,"村长说","侬这小子还真还上了！");
+                QMessageBox::information(this, "村长说", "剩下的别忘了还！");
             }
-            emit giveUpMoneyChanged(amount);
         }
     }
 }

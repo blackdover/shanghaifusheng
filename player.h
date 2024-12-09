@@ -32,7 +32,7 @@ public:
     void setBagSize(long long size);
 
 
-    QString getPlayerName() const;  // 获取玩家名字
+    QString getPlayerName() const;  // 获取名字
     void setPlayerName(const QString &name);
   
     long long getMaxBagSize() const;
@@ -47,7 +47,6 @@ signals:
     void fameChanged(long long newFame);
 
 private:
-
     long long money;
     long long bankMoney;
     long long giveUpMoney;
