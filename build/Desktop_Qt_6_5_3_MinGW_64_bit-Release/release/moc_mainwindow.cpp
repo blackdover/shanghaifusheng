@@ -71,11 +71,13 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "on_jinshanplace_clicked",
     "on_songjiangplace_clicked",
     "on_jiadingplace_clicked",
-    "on_newgame_triggered"
+    "on_newgame_triggered",
+    "on_seehelp_triggered",
+    "on_sudomodel_triggered"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[68];
+    uint offsetsAndSizes[72];
     char stringdata0[11];
     char stringdata1[15];
     char stringdata2[1];
@@ -110,6 +112,8 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata31[26];
     char stringdata32[24];
     char stringdata33[21];
+    char stringdata34[21];
+    char stringdata35[23];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -148,7 +152,9 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(514, 23),  // "on_jinshanplace_clicked"
         QT_MOC_LITERAL(538, 25),  // "on_songjiangplace_clicked"
         QT_MOC_LITERAL(564, 23),  // "on_jiadingplace_clicked"
-        QT_MOC_LITERAL(588, 20)   // "on_newgame_triggered"
+        QT_MOC_LITERAL(588, 20),  // "on_newgame_triggered"
+        QT_MOC_LITERAL(609, 20),  // "on_seehelp_triggered"
+        QT_MOC_LITERAL(630, 22)   // "on_sudomodel_triggered"
     },
     "MainWindow",
     "updatePlayerUI",
@@ -183,7 +189,9 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "on_jinshanplace_clicked",
     "on_songjiangplace_clicked",
     "on_jiadingplace_clicked",
-    "on_newgame_triggered"
+    "on_newgame_triggered",
+    "on_seehelp_triggered",
+    "on_sudomodel_triggered"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -195,7 +203,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      28,   14, // methods
+      30,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -203,34 +211,36 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  182,    2, 0x08,    1 /* Private */,
-       3,    0,  183,    2, 0x08,    2 /* Private */,
-       4,    0,  184,    2, 0x08,    3 /* Private */,
-       5,    0,  185,    2, 0x08,    4 /* Private */,
-       6,    0,  186,    2, 0x08,    5 /* Private */,
-       7,    0,  187,    2, 0x08,    6 /* Private */,
-       8,    3,  188,    2, 0x08,    7 /* Private */,
-      12,    1,  195,    2, 0x08,   11 /* Private */,
-      12,    2,  198,    2, 0x08,   13 /* Private */,
-      15,    0,  203,    2, 0x08,   16 /* Private */,
-      16,    0,  204,    2, 0x08,   17 /* Private */,
-      17,    0,  205,    2, 0x08,   18 /* Private */,
-      18,    0,  206,    2, 0x08,   19 /* Private */,
-      19,    0,  207,    2, 0x08,   20 /* Private */,
-      20,    0,  208,    2, 0x08,   21 /* Private */,
-      21,    0,  209,    2, 0x08,   22 /* Private */,
-      22,    0,  210,    2, 0x08,   23 /* Private */,
-      23,    0,  211,    2, 0x08,   24 /* Private */,
-      24,    0,  212,    2, 0x08,   25 /* Private */,
-      25,    0,  213,    2, 0x08,   26 /* Private */,
-      26,    0,  214,    2, 0x08,   27 /* Private */,
-      27,    0,  215,    2, 0x08,   28 /* Private */,
-      28,    0,  216,    2, 0x08,   29 /* Private */,
-      29,    0,  217,    2, 0x08,   30 /* Private */,
-      30,    0,  218,    2, 0x08,   31 /* Private */,
-      31,    0,  219,    2, 0x08,   32 /* Private */,
-      32,    0,  220,    2, 0x08,   33 /* Private */,
-      33,    0,  221,    2, 0x08,   34 /* Private */,
+       1,    0,  194,    2, 0x08,    1 /* Private */,
+       3,    0,  195,    2, 0x08,    2 /* Private */,
+       4,    0,  196,    2, 0x08,    3 /* Private */,
+       5,    0,  197,    2, 0x08,    4 /* Private */,
+       6,    0,  198,    2, 0x08,    5 /* Private */,
+       7,    0,  199,    2, 0x08,    6 /* Private */,
+       8,    3,  200,    2, 0x08,    7 /* Private */,
+      12,    1,  207,    2, 0x08,   11 /* Private */,
+      12,    2,  210,    2, 0x08,   13 /* Private */,
+      15,    0,  215,    2, 0x08,   16 /* Private */,
+      16,    0,  216,    2, 0x08,   17 /* Private */,
+      17,    0,  217,    2, 0x08,   18 /* Private */,
+      18,    0,  218,    2, 0x08,   19 /* Private */,
+      19,    0,  219,    2, 0x08,   20 /* Private */,
+      20,    0,  220,    2, 0x08,   21 /* Private */,
+      21,    0,  221,    2, 0x08,   22 /* Private */,
+      22,    0,  222,    2, 0x08,   23 /* Private */,
+      23,    0,  223,    2, 0x08,   24 /* Private */,
+      24,    0,  224,    2, 0x08,   25 /* Private */,
+      25,    0,  225,    2, 0x08,   26 /* Private */,
+      26,    0,  226,    2, 0x08,   27 /* Private */,
+      27,    0,  227,    2, 0x08,   28 /* Private */,
+      28,    0,  228,    2, 0x08,   29 /* Private */,
+      29,    0,  229,    2, 0x08,   30 /* Private */,
+      30,    0,  230,    2, 0x08,   31 /* Private */,
+      31,    0,  231,    2, 0x08,   32 /* Private */,
+      32,    0,  232,    2, 0x08,   33 /* Private */,
+      33,    0,  233,    2, 0x08,   34 /* Private */,
+      34,    0,  234,    2, 0x08,   35 /* Private */,
+      35,    0,  235,    2, 0x08,   36 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -242,6 +252,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void, QMetaType::QString, QMetaType::LongLong, QMetaType::Int,    9,   10,   11,
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Int, QMetaType::QString,   13,   14,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -335,6 +347,10 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'on_jiadingplace_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_newgame_triggered'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_seehelp_triggered'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_sudomodel_triggered'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -374,6 +390,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 25: _t->on_songjiangplace_clicked(); break;
         case 26: _t->on_jiadingplace_clicked(); break;
         case 27: _t->on_newgame_triggered(); break;
+        case 28: _t->on_seehelp_triggered(); break;
+        case 29: _t->on_sudomodel_triggered(); break;
         default: ;
         }
     }
@@ -398,13 +416,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 28)
+        if (_id < 30)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 28;
+        _id -= 30;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 28)
+        if (_id < 30)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 28;
+        _id -= 30;
     }
     return _id;
 }

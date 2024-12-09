@@ -36,8 +36,8 @@ void sudomodel::on_pushButton_3_clicked()
 
 void sudomodel::on_moneyadd_clicked()
 {
-        player->addMoney(10000);
-        player->addBankMoney(10000);
+    player->addMoney(1000000);
+    player->addBankMoney(1000000);
 
 }
 
@@ -45,7 +45,7 @@ void sudomodel::on_moneyadd_clicked()
 void sudomodel::on_healthadd_clicked()
 {
 
-        player->addHealth(10000);
+    player->addHealth(10000);
 
 }
 
@@ -53,7 +53,7 @@ void sudomodel::on_healthadd_clicked()
 void sudomodel::on_fameadd_clicked()
 {
 
-        player->addFame(10000);
+    player->addFame(10000);
 
 }
 
