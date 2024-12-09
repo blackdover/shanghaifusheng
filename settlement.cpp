@@ -90,43 +90,93 @@ void settlement::on_leave_clicked()
 
 void settlement::setTitle(Player *player)
 {
-    long long money = player->getMoney();
-    int health = player->getHealth();
-    int fame = player->getFame();
-
-    if (money > 1000000000) {
-        title = "传说中的财富之王";
-    } else if (money > 10000000 && fame > 90) {
-        title = "富可敌国的名流";
-    } else if (money > 100000 && health > 70) {
-        title = "健康与富饶的领主";
-    } else if (money > 100000 && health < 30) {
-        title = "金玉其外，败絮其中";
-    } else if (health > 70 && fame > 70) {
-        title = "健康的勇士";
-    } else if (health > 70) {
-        title = "坚不可摧的守护者";
-    } else if (fame > 70) {
-        title = "名声显赫的传奇";
-    } else if (money < 100 && fame > 70) {
-        title = "贫困却备受敬爱";
-    } else if (money < 100 && health < 30) {
-        title = "贫病交加的旅人";
-    } else if (money < 100 && health > 70) {
-        title = "清贫却坚韧";
-    } else if (fame < 30 && money < 100) {
-        title = "默默无闻的追求者";
-    } else if (fame > 70 && health < 30) {
-        title = "声名鹊起的虚弱者";
-    } else if (health > 70 && fame < 30) {
-        title = "健康却隐匿的英雄";
-    } else if (money > 10000 && fame >= 30 && fame <= 70 && health >= 30 && health <= 70) {
-        title = "富有却平凡的生活者";
-    } else if (money < 100) {
-        title = "一贫如洗的流浪者";
+    // 定义金钱等级
+    enum MoneyCategory { DEEPLY_IN_DEBT, IN_DEBT, VERY_POOR, POOR, COMFORTABLE, WEALTHY, SUPER_RICH };
+    MoneyCategory moneyCat;
+    if (money >= 1000000000) {
+        moneyCat = SUPER_RICH;
+    } else if (money >= 100000) {
+        moneyCat = WEALTHY;
+    } else if (money >= 10000) {
+        moneyCat = COMFORTABLE;
+    } else if (money >= 100) {
+        moneyCat = POOR;
+    } else if (money >= 0) {
+        moneyCat = VERY_POOR;
+    } else if (money > -10000) {
+        moneyCat = IN_DEBT;
     } else {
-        title = "无名的冒险者";
+        moneyCat = DEEPLY_IN_DEBT;
+    }
+
+    // 健康等级
+    enum HealthCategory { UNHEALTHY, AVERAGE_HEALTH, HEALTHY };
+    HealthCategory healthCat;
+    if (health >= 70) {
+        healthCat = HEALTHY;
+    } else if (health >= 30) {
+        healthCat = AVERAGE_HEALTH;
+    } else {
+        healthCat = UNHEALTHY;
+    }
+
+    // 声誉等级
+    enum FameCategory { UNKNOWN, KNOWN, FAMOUS };
+    FameCategory fameCat;
+    if (fame >= 70) {
+        fameCat = FAMOUS;
+    } else if (fame >= 30) {
+        fameCat = KNOWN;
+    } else {
+        fameCat = UNKNOWN;
+    }
+
+    if (moneyCat == SUPER_RICH && healthCat == HEALTHY && fameCat == FAMOUS) {
+        title = "至仁至善至强之王";
+    }
+    else if (moneyCat == SUPER_RICH) {
+        title = "天上地下唯我这般富有";
+    }
+    else if (moneyCat == WEALTHY && healthCat == HEALTHY) {
+        title = "有米且命长";
+    }
+    else if (moneyCat == WEALTHY && fameCat == FAMOUS) {
+        title = "名富天下的荣耀之人";
+    }
+    else if (healthCat == HEALTHY && fameCat == FAMOUS) {
+        title = "临港活着的传奇";
+    }
+    else if (moneyCat == IN_DEBT) {
+        title = "负债英豪";
+    }
+    else if (moneyCat == DEEPLY_IN_DEBT) {
+        title = "欠的越多欠的越少";
+    }
+    else if (moneyCat == VERY_POOR && fameCat == FAMOUS) {
+        title = "贫寒传奇";
+    }
+    else if (healthCat == HEALTHY) {
+        title = "永生之人";
+    }
+    else if (fameCat == FAMOUS) {
+        title = "无人不知无人不晓";
+    }
+    else if (moneyCat == POOR && healthCat == UNHEALTHY) {
+        title = "苦行旅者";
+    }
+    else if (moneyCat == POOR && healthCat == HEALTHY) {
+        title = "村民";
+    }
+    else if (moneyCat == POOR) {
+        title = "奋斗不息";
+    }
+    else if (moneyCat == VERY_POOR) {
+        title = "流浪汉";
+    }
+    else {
+        title = "无畏奋进之人";
     }
 
     ui->title->setText(title);
 }
+
