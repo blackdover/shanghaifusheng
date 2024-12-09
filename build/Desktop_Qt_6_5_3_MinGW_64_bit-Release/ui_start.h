@@ -24,6 +24,7 @@ public:
     QPushButton *startbutton;
     QPushButton *rankbutton;
     QPushButton *connectusbutton;
+    QPushButton *gotoback;
 
     void setupUi(QWidget *start)
     {
@@ -39,13 +40,16 @@ public:
         label->setFont(font);
         startbutton = new QPushButton(start);
         startbutton->setObjectName("startbutton");
-        startbutton->setGeometry(QRect(90, 210, 91, 31));
+        startbutton->setGeometry(QRect(90, 180, 91, 31));
         rankbutton = new QPushButton(start);
         rankbutton->setObjectName("rankbutton");
-        rankbutton->setGeometry(QRect(90, 270, 91, 31));
+        rankbutton->setGeometry(QRect(90, 235, 91, 31));
         connectusbutton = new QPushButton(start);
         connectusbutton->setObjectName("connectusbutton");
-        connectusbutton->setGeometry(QRect(90, 330, 91, 31));
+        connectusbutton->setGeometry(QRect(90, 285, 91, 31));
+        gotoback = new QPushButton(start);
+        gotoback->setObjectName("gotoback");
+        gotoback->setGeometry(QRect(90, 335, 91, 31));
 
         retranslateUi(start);
 
@@ -59,6 +63,7 @@ public:
         startbutton->setText(QCoreApplication::translate("start", "\345\274\200\345\247\213\346\270\270\346\210\217", nullptr));
         rankbutton->setText(QCoreApplication::translate("start", "\346\216\222\350\241\214\346\246\234", nullptr));
         connectusbutton->setText(QCoreApplication::translate("start", "\350\201\224\347\263\273\346\210\221\344\273\254", nullptr));
+        gotoback->setText(QCoreApplication::translate("start", "\350\277\233\345\205\245\345\220\216\345\217\260", nullptr));
     } // retranslateUi
 
 };

@@ -9,7 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    backendmanager.cpp \
+    backend.cpp \
     bank.cpp \
     connectus.cpp \
     eventmanager.cpp \
@@ -34,7 +34,7 @@ SOURCES += \
     uitest.cpp
 
 HEADERS += \
-    backendmanager.h \
+    backend.h \
     bank.h \
     connectus.h \
     eventmanager.h \
@@ -59,6 +59,7 @@ HEADERS += \
 
 
 FORMS += \
+    backend.ui \
     bank.ui \
     connectus.ui \
     help.ui \

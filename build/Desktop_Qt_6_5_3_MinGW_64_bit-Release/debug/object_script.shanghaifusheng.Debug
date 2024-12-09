@@ -1,4 +1,4 @@
-debug/backendmanager.o
+debug/backend.o
 debug/bank.o
 debug/connectus.o
 debug/eventmanager.o
@@ -22,6 +22,7 @@ debug/stdmessagebox.o
 debug/sudomodel.o
 debug/uitest.o
 debug/qrc_txtResource.o
+debug/moc_backend.o
 debug/moc_bank.o
 debug/moc_connectus.o
 debug/moc_help.o

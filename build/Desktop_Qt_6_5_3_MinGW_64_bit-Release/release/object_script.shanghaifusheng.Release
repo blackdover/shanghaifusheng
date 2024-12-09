@@ -1,4 +1,4 @@
-release/backendmanager.o
+release/backend.o
 release/bank.o
 release/connectus.o
 release/eventmanager.o
@@ -22,6 +22,7 @@ release/stdmessagebox.o
 release/sudomodel.o
 release/uitest.o
 release/qrc_txtResource.o
+release/moc_backend.o
 release/moc_bank.o
 release/moc_connectus.o
 release/moc_help.o
