@@ -62,7 +62,7 @@ public:
         label->setFont(font);
         loginwidget = new QWidget(backend);
         loginwidget->setObjectName("loginwidget");
-        loginwidget->setGeometry(QRect(0, 565, 746, 591));
+        loginwidget->setGeometry(QRect(0, 0, 746, 591));
         loginwidget->setStyleSheet(QString::fromUtf8("background-color: rgb(214, 214, 214);"));
         label_2 = new QLabel(loginwidget);
         label_2->setObjectName("label_2");
