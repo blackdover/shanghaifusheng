@@ -6,9 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>536</width>
-    <height>163</height>
+    <width>426</width>
+    <height>186</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
   </property>
   <property name="mouseTracking">
    <bool>false</bool>
@@ -19,8 +24,8 @@
   <widget class="QPushButton" name="OK">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>120</y>
+     <x>165</x>
+     <y>135</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -35,10 +40,10 @@
   <widget class="QLabel" name="description">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>40</y>
-     <width>321</width>
-     <height>41</height>
+     <x>5</x>
+     <y>35</y>
+     <width>416</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="text">
@@ -48,7 +53,7 @@
     <bool>false</bool>
    </property>
    <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignCenter</set>
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

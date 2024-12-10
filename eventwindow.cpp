@@ -25,13 +25,25 @@ eventwindow::~eventwindow()
     delete ui;
 }
 
-//产生一个随机事件
+// 产生一个随机事件
 RandomEvent* eventwindow::triggerRandomEvent()
 {
-    if (events.empty())return nullptr;
+    // 检查 events 是否为空
+    if (events.isEmpty()) {
+        ui->description->setText("没有可触发的事件！");
+        return nullptr;
+    }
+    int size = events.size();
+    // 确保 size 大于 0
+    if (size <= 0) {
+        ui->description->setText("无效的事件列表！");
+        return nullptr;
+    }
 
-    int index = QRandomGenerator::global()->bounded(events.size());
+    int index = QRandomGenerator::global()->bounded(size);
+
     ui->description->setText(events[index].getDescription());
+
     return &events[index];
 }
 void eventwindow::on_OK_clicked()
