@@ -40,7 +40,7 @@ RandomEvent* eventwindow::triggerRandomEvent()
         return nullptr;
     }
 
-    int index = QRandomGenerator::global()->bounded(size);
+    int index = QRandomGenerator::global()->bounded(0,size);
 
     ui->description->setText(events[index].getDescription());
 

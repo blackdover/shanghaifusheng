@@ -18,7 +18,6 @@
 #include"settlement.h"
 #include"stdmessagebox.h"
 #include "eventwindow.h"
-#include <QRandomGenerator>
 #include<qapplication.h>
 #include"start.h"
 
@@ -361,7 +360,7 @@ void MainWindow::showGameOverMessage()
 //发生随机事件
 void MainWindow::randomevent()
 {
-    int probability = QRandomGenerator::global()->bounded(100); //生成一个0到99的随机数
+    int probability = QRandomGenerator::global()->bounded(1,100); //生成一个0到99的随机数
     if (probability <= 30)//30%概率触发随机事件
     {
         eventwindow *event = new eventwindow();  // 创建eventwindow实例
