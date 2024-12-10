@@ -35,6 +35,7 @@ public:
     QAction *newgame;
     QAction *seehelp;
     QAction *sudomodel;
+    QAction *backtomain;
     QWidget *centralwidget;
     QPushButton *sell;
     QWidget *layoutWidget;
@@ -96,6 +97,8 @@ public:
         seehelp->setObjectName("seehelp");
         sudomodel = new QAction(MainWindow);
         sudomodel->setObjectName("sudomodel");
+        backtomain = new QAction(MainWindow);
+        backtomain->setObjectName("backtomain");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         sell = new QPushButton(centralwidget);
@@ -310,7 +313,7 @@ public:
         groupBox->raise();
         groupBox_2->raise();
         sell->raise();
-        layoutWidget->raise();
+        layoutWidget1->raise();
         daylabel->raise();
         buy->raise();
         itemWidget->raise();
@@ -322,7 +325,7 @@ public:
         MainWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 637, 18));
+        menubar->setGeometry(QRect(0, 0, 637, 22));
         menu = new QMenu(menubar);
         menu->setObjectName("menu");
         menu_2 = new QMenu(menubar);
@@ -332,6 +335,7 @@ public:
         menubar->addAction(menu->menuAction());
         menubar->addAction(menu_2->menuAction());
         menu->addAction(newgame);
+        menu->addAction(backtomain);
         menu_2->addAction(seehelp);
         menu_2->addAction(sudomodel);
 
@@ -346,6 +350,7 @@ public:
         newgame->setText(QCoreApplication::translate("MainWindow", "\346\226\260\346\270\270\346\210\217", nullptr));
         seehelp->setText(QCoreApplication::translate("MainWindow", "\346\237\245\347\234\213\345\270\256\345\212\251\346\226\207\346\241\243", nullptr));
         sudomodel->setText(QCoreApplication::translate("MainWindow", "\347\245\236\347\247\230\346\214\211\351\222\256", nullptr));
+        backtomain->setText(QCoreApplication::translate("MainWindow", "\345\233\236\345\210\260\344\270\273\350\217\234\345\215\225", nullptr));
         sell->setText(QCoreApplication::translate("MainWindow", "<=\345\215\226\345\207\272", nullptr));
         bankButton->setText(QCoreApplication::translate("MainWindow", "\351\223\266\350\241\214", nullptr));
         hospitalButton->setText(QCoreApplication::translate("MainWindow", "\345\214\273\351\231\242", nullptr));
