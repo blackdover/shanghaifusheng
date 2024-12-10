@@ -35,7 +35,7 @@ public:
         OK->setMouseTracking(false);
         description = new QLabel(eventwindow);
         description->setObjectName("description");
-        description->setGeometry(QRect(110, 40, 321, 41));
+        description->setGeometry(QRect(160, 40, 221, 41));
         description->setScaledContents(false);
         description->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
