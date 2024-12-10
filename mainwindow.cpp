@@ -57,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->douyinButton, &QPushButton::clicked, this, &MainWindow::douyinButtonClick);
 
 
-    if (!itemManager->loadItemsFromFile(":/res/items.txt")) {
+    if (!itemManager->loadItemsFromFile("")) {
         qDebug() << "Failed to load items from file. Using default items.";
     }
 
@@ -105,13 +105,11 @@ void MainWindow::refreshItemsInMarket(int count)
 {
     ui->itemWidget->clear();
 
-    ItemManager itemManager;
+    // if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
+    //     qDebug() << "Failed to load items from file. Using default items.";
+    // }
 
-    if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
-        qDebug() << "Failed to load items from file. Using default items.";
-    }
-
-    const auto& allItems = itemManager.getAllItems();
+    const auto& allItems = itemManager->getAllItems();
 
     int displayCount = std::min(count, static_cast<int>(allItems.size()));
 
@@ -143,13 +141,11 @@ void MainWindow::refreshItemsInMarket(int count, const QString& excludeName)
 {
     ui->itemWidget->clear();
 
-    ItemManager itemManager;
+    // if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
+    //     qDebug() << "Failed to load items from file. Using default items.";
+    // }
 
-    if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
-        qDebug() << "Failed to load items from file. Using default items.";
-    }
-
-    const auto& allItems = itemManager.getAllItems();
+    const auto& allItems = itemManager->getAllItems();
 
     QVector<Item> filteredItems;
     for (const auto& item : allItems) {
