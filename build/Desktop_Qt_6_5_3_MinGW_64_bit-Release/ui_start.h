@@ -40,7 +40,7 @@ public:
         label->setFont(font);
         startbutton = new QPushButton(start);
         startbutton->setObjectName("startbutton");
-        startbutton->setGeometry(QRect(90, 185, 91, 31));
+        startbutton->setGeometry(QRect(90, 180, 91, 31));
         rankbutton = new QPushButton(start);
         rankbutton->setObjectName("rankbutton");
         rankbutton->setGeometry(QRect(90, 235, 91, 31));
