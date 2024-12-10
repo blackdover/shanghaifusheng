@@ -24,10 +24,11 @@ class Ui_Post
 public:
     QLabel *label;
     QLabel *label_2;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *payButton;
+    QPushButton *lendButton;
     QSpacerItem *horizontalSpacer;
     QPushButton *leaveButton;
     QSpacerItem *horizontalSpacer_3;
@@ -43,26 +44,31 @@ public:
         label_2 = new QLabel(Post);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(50, 50, 251, 41));
-        widget = new QWidget(Post);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(30, 100, 271, 41));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(Post);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(15, 100, 301, 41));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        payButton = new QPushButton(widget);
+        payButton = new QPushButton(layoutWidget);
         payButton->setObjectName("payButton");
 
         horizontalLayout->addWidget(payButton);
+
+        lendButton = new QPushButton(layoutWidget);
+        lendButton->setObjectName("lendButton");
+
+        horizontalLayout->addWidget(lendButton);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        leaveButton = new QPushButton(widget);
+        leaveButton = new QPushButton(layoutWidget);
         leaveButton->setObjectName("leaveButton");
 
         horizontalLayout->addWidget(leaveButton);
@@ -83,6 +89,7 @@ public:
         label->setText(QCoreApplication::translate("Post", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">\346\254\242\350\277\216\346\202\250\346\235\245\345\210\260\351\202\256\345\261\200\357\274\201</span></p></body></html>", nullptr));
         label_2->setText(QCoreApplication::translate("Post", "<html><head/><body><p><span style=\" font-size:12pt;\">\350\257\267\351\227\256\346\202\250\346\235\245\345\271\262\347\202\271\344\273\200\344\271\210\357\274\237</span></p></body></html>", nullptr));
         payButton->setText(QCoreApplication::translate("Post", "\350\277\230\351\222\261", nullptr));
+        lendButton->setText(QCoreApplication::translate("Post", "\345\206\215\346\211\276\346\235\221\351\225\277\345\200\237\347\202\271", nullptr));
         leaveButton->setText(QCoreApplication::translate("Post", "\347\246\273\345\274\200", nullptr));
     } // retranslateUi
 

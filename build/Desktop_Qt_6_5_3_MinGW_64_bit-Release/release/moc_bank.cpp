@@ -45,11 +45,12 @@ static constexpr auto qt_meta_stringdata_CLASSBankENDCLASS = QtMocHelpers::strin
     "savings",
     "on_saveButton_clicked",
     "on_drawButton_clicked",
-    "on_leaveButton_clicked"
+    "on_leaveButton_clicked",
+    "on_kidButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSBankENDCLASS_t {
-    uint offsetsAndSizes[16];
+    uint offsetsAndSizes[18];
     char stringdata0[5];
     char stringdata1[17];
     char stringdata2[1];
@@ -58,6 +59,7 @@ struct qt_meta_stringdata_CLASSBankENDCLASS_t {
     char stringdata5[22];
     char stringdata6[22];
     char stringdata7[23];
+    char stringdata8[21];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSBankENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -70,7 +72,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSBankENDCLASS_t qt_meta_stringda
         QT_MOC_LITERAL(28, 7),  // "savings"
         QT_MOC_LITERAL(36, 21),  // "on_saveButton_clicked"
         QT_MOC_LITERAL(58, 21),  // "on_drawButton_clicked"
-        QT_MOC_LITERAL(80, 22)   // "on_leaveButton_clicked"
+        QT_MOC_LITERAL(80, 22),  // "on_leaveButton_clicked"
+        QT_MOC_LITERAL(103, 20)   // "on_kidButton_clicked"
     },
     "Bank",
     "bankMoneyChanged",
@@ -79,7 +82,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSBankENDCLASS_t qt_meta_stringda
     "savings",
     "on_saveButton_clicked",
     "on_drawButton_clicked",
-    "on_leaveButton_clicked"
+    "on_leaveButton_clicked",
+    "on_kidButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -91,7 +95,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSBankENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -99,17 +103,19 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSBankENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   38,    2, 0x06,    1 /* Public */,
+       1,    2,   44,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,   43,    2, 0x08,    4 /* Private */,
-       6,    0,   44,    2, 0x08,    5 /* Private */,
-       7,    0,   45,    2, 0x08,    6 /* Private */,
+       5,    0,   49,    2, 0x08,    4 /* Private */,
+       6,    0,   50,    2, 0x08,    5 /* Private */,
+       7,    0,   51,    2, 0x08,    6 /* Private */,
+       8,    0,   52,    2, 0x08,    7 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::LongLong, QMetaType::LongLong,    3,    4,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -135,6 +141,8 @@ Q_CONSTINIT const QMetaObject Bank::staticMetaObject = { {
         // method 'on_drawButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_leaveButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_kidButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -150,6 +158,7 @@ void Bank::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 1: _t->on_saveButton_clicked(); break;
         case 2: _t->on_drawButton_clicked(); break;
         case 3: _t->on_leaveButton_clicked(); break;
+        case 4: _t->on_kidButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -183,13 +192,13 @@ int Bank::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }

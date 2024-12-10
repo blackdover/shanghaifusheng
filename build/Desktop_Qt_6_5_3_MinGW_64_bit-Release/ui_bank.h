@@ -30,6 +30,7 @@ public:
     QPushButton *saveButton;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *drawButton;
+    QPushButton *kidButton;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *leaveButton;
     QSpacerItem *horizontalSpacer_4;
@@ -48,7 +49,7 @@ public:
         tipLabel->setGeometry(QRect(40, 60, 281, 51));
         layoutWidget = new QWidget(Bank);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(20, 140, 321, 51));
+        layoutWidget->setGeometry(QRect(10, 150, 344, 51));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -70,6 +71,11 @@ public:
 
         horizontalLayout->addWidget(drawButton);
 
+        kidButton = new QPushButton(layoutWidget);
+        kidButton->setObjectName("kidButton");
+
+        horizontalLayout->addWidget(kidButton);
+
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_3);
@@ -87,9 +93,9 @@ public:
         horizontalLayout->setStretch(1, 1);
         horizontalLayout->setStretch(2, 1);
         horizontalLayout->setStretch(3, 1);
-        horizontalLayout->setStretch(4, 1);
         horizontalLayout->setStretch(5, 1);
         horizontalLayout->setStretch(6, 1);
+        horizontalLayout->setStretch(7, 1);
 
         retranslateUi(Bank);
 
@@ -103,6 +109,7 @@ public:
         tipLabel->setText(QString());
         saveButton->setText(QCoreApplication::translate("Bank", "\345\255\230\346\254\276", nullptr));
         drawButton->setText(QCoreApplication::translate("Bank", "\345\217\226\346\254\276", nullptr));
+        kidButton->setText(QCoreApplication::translate("Bank", "\346\210\221\350\246\201\346\215\220\351\222\261", nullptr));
         leaveButton->setText(QCoreApplication::translate("Bank", "\347\246\273\345\274\200", nullptr));
     } // retranslateUi
 
