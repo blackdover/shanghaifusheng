@@ -1,12 +1,25 @@
 #ifndef EVENTWINDOW_H
 #define EVENTWINDOW_H
 
-#include <QWidget>
+#include <QDialog>
+#include <eventmanager.h>
 
-class eventwindow
+namespace Ui {
+class eventwindow;
+}
+
+class eventwindow : public QDialog
 {
 public:
-    eventwindow();
+    explicit eventwindow(QWidget *parent = nullptr);
+    RandomEvent* triggerRandomEvent();
+    ~eventwindow();
+private slots:
+    void on_OK_clicked();
+private:
+    Ui::eventwindow *ui;
+    EventManager eventManager;
+    QVector<RandomEvent> events;
 };
 
 #endif // EVENTWINDOW_H
