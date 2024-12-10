@@ -14,7 +14,7 @@ Bank::Bank(Player *player,QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("银行");
-
+    setWindowIcon(QIcon(":/res/icon.png"));
     connect(ui->leaveButton, &QPushButton::clicked, this, &Bank::on_leaveButton_clicked);
 }
 
@@ -83,4 +83,53 @@ void Bank::on_leaveButton_clicked()
 {
     this->close();
 }
+
+
+void Bank::on_kidButton_clicked()
+{
+    bool ok;
+    int amount = QInputDialog::getInt(this, "捐款", "您捐多少钱？", 0, 0, player->getMoney(), 1, &ok);
+    updateTipLabel();
+    if (ok)
+    {
+        player->reduceMoney(amount);
+        myCash-=amount;
+        int fameIncrease = 0;
+        QString fameMessage;
+
+        if (amount >= 1000000) {
+            fameIncrease = amount/1000000*1000;
+            player->addFame(fameIncrease);
+            fameMessage = QString("您捐了 %1 金币，获得了 %2 点声望！").arg(amount).arg(fameIncrease);
+        }
+        else if (amount >= 100000) {
+            fameIncrease = amount/100000*100;
+            player->addFame(fameIncrease);
+            fameMessage = QString("您捐了 %1 金币，获得了 %2 点声望！").arg(amount).arg(fameIncrease);
+        }
+        else if (amount >= 10000) {
+            fameIncrease = amount/10000*10;
+            player->addFame(fameIncrease);
+            fameMessage = QString("您捐了 %1 金币，获得了 %2 点声望！").arg(amount).arg(fameIncrease);
+        }
+        else if (amount > 0) {
+            fameIncrease = 5;
+            player->addFame(fameIncrease);
+            fameMessage = QString("您捐了 %1 金币，获得了 %2 点声望！").arg(amount).arg(fameIncrease);
+        }
+
+        if (fameIncrease > 0) {
+            QMessageBox::information(this, "捐款成功", fameMessage);
+        } else {
+            QMessageBox::warning(this, "捐款失败", "捐款金额无效或为零，无法增加声望。");
+        }
+
+        if (amount > 10000000) {
+            QMessageBox::information(this, "捐款成功", "您的捐款金额已经达到上限，无法继续捐赠。");
+            player->addFame(5000);
+        }
+    }
+    updateTipLabel();
+}
+
 

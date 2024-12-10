@@ -45,17 +45,17 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>140</y>
-     <width>321</width>
+     <x>10</x>
+     <y>150</y>
+     <width>344</width>
      <height>51</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1,1,1,1,1">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1,1,0,1,1,1">
     <item>
      <spacer name="horizontalSpacer">
       <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
@@ -75,7 +75,7 @@
     <item>
      <spacer name="horizontalSpacer_2">
       <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
@@ -93,9 +93,16 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="kidButton">
+      <property name="text">
+       <string>我要捐钱</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <spacer name="horizontalSpacer_3">
       <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
@@ -115,7 +122,7 @@
     <item>
      <spacer name="horizontalSpacer_4">
       <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
