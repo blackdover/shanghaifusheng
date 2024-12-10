@@ -40,7 +40,7 @@
      <item>
       <spacer name="horizontalSpacer_5">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -60,7 +60,7 @@
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -80,7 +80,7 @@
      <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -100,7 +100,7 @@
      <item>
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -120,7 +120,7 @@
      <item>
       <spacer name="horizontalSpacer_4">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -140,7 +140,7 @@
      <item>
       <spacer name="horizontalSpacer_6">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -566,7 +566,7 @@ color: rgb(0, 255, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>637</width>
-     <height>18</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -574,6 +574,7 @@ color: rgb(0, 255, 0);</string>
      <string>设置</string>
     </property>
     <addaction name="newgame"/>
+    <addaction name="backtomain"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -598,6 +599,11 @@ color: rgb(0, 255, 0);</string>
   <action name="sudomodel">
    <property name="text">
     <string>神秘按钮</string>
+   </property>
+  </action>
+  <action name="backtomain">
+   <property name="text">
+    <string>回到主菜单</string>
    </property>
   </action>
  </widget>

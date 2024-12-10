@@ -18,6 +18,7 @@
 #include"settlement.h"
 #include"stdmessagebox.h"
 #include<qapplication.h>
+#include"start.h"
 class event;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -562,5 +563,13 @@ void MainWindow::on_sudomodel_triggered()
     sudo = new sudomodel();
     sudo->setPlayer(player);
     sudo->show();
+}
+
+
+void MainWindow::on_backtomain_triggered()
+{
+    st=new start();
+    st->show();
+    this->close();
 }
 
