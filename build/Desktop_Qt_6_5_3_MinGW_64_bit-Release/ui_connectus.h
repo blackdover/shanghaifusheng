@@ -22,12 +22,14 @@ public:
     QLabel *githubtext;
     QLabel *github;
     QLabel *label_2;
+    QLabel *label;
+    QLabel *qrcodeimg;
 
     void setupUi(QWidget *connectUs)
     {
         if (connectUs->objectName().isEmpty())
             connectUs->setObjectName("connectUs");
-        connectUs->resize(240, 368);
+        connectUs->resize(240, 403);
         githubtext = new QLabel(connectUs);
         githubtext->setObjectName("githubtext");
         githubtext->setGeometry(QRect(22, 120, 121, 31));
@@ -44,8 +46,18 @@ public:
         github->setFont(font);
         label_2 = new QLabel(connectUs);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(0, 200, 231, 41));
+        label_2->setGeometry(QRect(0, 175, 231, 41));
         label_2->setFont(font);
+        label = new QLabel(connectUs);
+        label->setObjectName("label");
+        label->setGeometry(QRect(10, 245, 76, 26));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("\346\245\267\344\275\223")});
+        font1.setPointSize(10);
+        label->setFont(font1);
+        qrcodeimg = new QLabel(connectUs);
+        qrcodeimg->setObjectName("qrcodeimg");
+        qrcodeimg->setGeometry(QRect(85, 245, 140, 140));
 
         retranslateUi(connectUs);
 
@@ -58,6 +70,8 @@ public:
         githubtext->setText(QCoreApplication::translate("connectUs", "github\344\273\223\345\272\223\357\274\232", nullptr));
         github->setText(QCoreApplication::translate("connectUs", "\347\202\271\345\207\273\350\267\263\350\275\254", nullptr));
         label_2->setText(QCoreApplication::translate("connectUs", "\351\202\256\347\256\261\357\274\232blackdover@163.com", nullptr));
+        label->setText(QCoreApplication::translate("connectUs", "QQ\344\272\214\347\273\264\347\240\201\357\274\232", nullptr));
+        qrcodeimg->setText(QCoreApplication::translate("connectUs", "\344\272\214\347\273\264\347\240\201", nullptr));
     } // retranslateUi
 
 };
