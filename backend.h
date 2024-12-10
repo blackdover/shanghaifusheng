@@ -2,8 +2,7 @@
 #define BACKEND_H
 
 #include <QWidget>
-#include<itemmanager.h>
-#include<qtreewidget.h>
+
 namespace Ui {
 class backend;
 }
@@ -16,20 +15,8 @@ public:
     explicit backend(QWidget *parent = nullptr);
     ~backend();
 
-private slots:
-    void on_confirmbutton_clicked();
-    void on_addconfirm_clicked();
-    void on_deleteconfirm_clicked();
-    void on_editconfirm_clicked();
-
 private:
     Ui::backend *ui;
-
-    ItemManager itemManager;
-    QTreeWidget* itemWidget;
-    void loadItemsToTree();
-    void addItemToTree(const Item& item);
-    void onItemSelected(QTreeWidgetItem* item);
 };
 
 #endif // BACKEND_H

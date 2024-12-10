@@ -3,14 +3,14 @@
 
 #include <string>
 #include <QtGlobal>
-class AdditionalEffect; // 附加效果声明
+class AdditionalEffect; // 附加效果的前向声明
 
 class Item {
 private:
-    std::string name;       // 物品名称
+    std::string name;          // 物品名称
     qint64 basePrice;       // 基础价格
-    qint64 priceFluctuation;// 波动价格
-    AdditionalEffect* effect; // 附加效果
+    qint64 priceFluctuation;// 波动价格范围
+    AdditionalEffect* effect;  // 附加效果指针
 
 public:
     Item(const std::string& name, long long basePrice, long long priceFluctuation, AdditionalEffect* effect = nullptr);

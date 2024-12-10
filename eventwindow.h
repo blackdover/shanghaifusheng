@@ -8,8 +8,11 @@ namespace Ui {
 class eventwindow;
 }
 
+
 class eventwindow : public QDialog
 {
+    Q_OBJECT
+
 public:
     explicit eventwindow(QWidget *parent = nullptr);
     RandomEvent* triggerRandomEvent();

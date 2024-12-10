@@ -39,6 +39,7 @@ public:
     const QVector<RandomEvent>& getAllEvents() const;
 private:
     QVector<RandomEvent> events; // 存储所有事件
+
 };
 
 #endif // EVENTMANAGER_H
