@@ -14,6 +14,7 @@
 #include"help.h"
 #include"sudomodel.h"
 #include"backend.h"
+#include "eventwindow.h"
 QT_BEGIN_NAMESPACE
 
 namespace Ui {
@@ -37,6 +38,7 @@ private slots:
 
     void moreneedmoney();
     void nextday();
+    void randomevent();
     void on_buy_clicked();
     void on_sell_clicked();
 

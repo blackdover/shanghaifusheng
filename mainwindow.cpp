@@ -17,7 +17,8 @@
 #include"uitest.h"
 #include"settlement.h"
 #include"stdmessagebox.h"
-#include<qapplication.h>
+#include "eventwindow.h"
+#include <QRandomGenerator>
 class event;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -53,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->douyinButton, &QPushButton::clicked, this, &MainWindow::douyinButtonClick);
 
 
-    if (!itemManager->loadItemsFromFile("")) {
+    if (!itemManager->loadItemsFromFile(":/res/items.txt")) {
         qDebug() << "Failed to load items from file. Using default items.";
     }
 
@@ -101,13 +102,13 @@ void MainWindow::refreshItemsInMarket(int count)
 {
     ui->itemWidget->clear();
 
-    // ItemManager itemManager;
+    ItemManager itemManager;
 
-    // if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
-    //     qDebug() << "Failed to load items from file. Using default items.";
-    // }
+    if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
+        qDebug() << "Failed to load items from file. Using default items.";
+    }
 
-    const auto& allItems = itemManager->getAllItems();
+    const auto& allItems = itemManager.getAllItems();
 
     int displayCount = std::min(count, static_cast<int>(allItems.size()));
 
@@ -139,13 +140,13 @@ void MainWindow::refreshItemsInMarket(int count, const QString& excludeName)
 {
     ui->itemWidget->clear();
 
-    // ItemManager itemManager;
+    ItemManager itemManager;
 
-    // if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
-    //     qDebug() << "Failed to load items from file. Using default items.";
-    // }
+    if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
+        qDebug() << "Failed to load items from file. Using default items.";
+    }
 
-    const auto& allItems = itemManager->getAllItems();
+    const auto& allItems = itemManager.getAllItems();
 
     QVector<Item> filteredItems;
     for (const auto& item : allItems) {
@@ -357,6 +358,16 @@ void MainWindow::showGameOverMessage()
     settlement *se=new settlement(this);
     se->show();
 }
+void MainWindow::randomevent()
+{
+    int probability = QRandomGenerator::global()->bounded(100); //生成一个0到99的随机数
+    if (probability <= 30)//30%概率触发随机事件
+    {
+        eventwindow *event = new eventwindow();  // 创建eventwindow实例
+        event->triggerRandomEvent();
+        event->show(); // 显示窗口
+    }
+}
 void MainWindow::nextday()
 {
     refreshItemsInMarket(6);
@@ -369,6 +380,7 @@ void MainWindow::nextday()
         refreshItemsInMarket(10);
     }
     updateDate();
+    randomevent();
 }
 void MainWindow::on_lujiazuiplace_clicked()
 {

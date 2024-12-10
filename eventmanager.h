@@ -5,6 +5,7 @@ class eventmanager
 {
 public:
     eventmanager();
+    ~eventmanager();
 };
 
 #endif // EVENTMANAGER_H
