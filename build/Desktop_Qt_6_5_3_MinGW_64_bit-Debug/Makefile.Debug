@@ -393,6 +393,30 @@ debug/moc_backend.cpp: ../../backend.h \
 		D:/qt/6.5.3/mingw_64/include/QtCore/QSizeF \
 		D:/qt/6.5.3/mingw_64/include/QtGui/QTransform \
 		D:/qt/6.5.3/mingw_64/include/QtCore/qnativeinterface.h \
+		../../itemmanager.h \
+		../../Item.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/QtGlobal \
+		D:/qt/6.5.3/mingw_64/include/QtCore/QString \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtreewidget.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtreeview.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractitemview.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qframe.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/qitemselectionmodel.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qstyleoption.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/qlocale.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		D:/qt/6.5.3/mingw_64/include/QtGui/qvalidator.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/qregularexpression.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qslider.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractslider.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qstyle.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtabbar.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtabwidget.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qrubberband.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtreewidgetitemiterator.h \
 		debug/moc_predefs.h \
 		D:/qt/6.5.3/mingw_64/bin/moc.exe
 	D:\qt\6.5.3\mingw_64\bin\moc.exe $(DEFINES) --include D:/code/works/shanghaifusheng/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/qt/6.5.3/mingw_64/mkspecs/win32-g++ -ID:/code/works/shanghaifusheng -ID:/qt/6.5.3/mingw_64/include -ID:/qt/6.5.3/mingw_64/include/QtWidgets -ID:/qt/6.5.3/mingw_64/include/QtGui -ID:/qt/6.5.3/mingw_64/include/QtCore -I. -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\backend.h -o debug\moc_backend.cpp
@@ -3335,7 +3359,33 @@ debug/backend.o: ../../backend.cpp ../../backend.h \
 		D:/qt/6.5.3/mingw_64/include/QtCore/QSizeF \
 		D:/qt/6.5.3/mingw_64/include/QtGui/QTransform \
 		D:/qt/6.5.3/mingw_64/include/QtCore/qnativeinterface.h \
-		ui_backend.h
+		../../itemmanager.h \
+		../../Item.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/QtGlobal \
+		D:/qt/6.5.3/mingw_64/include/QtCore/QString \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtreewidget.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtreeview.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractitemview.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qframe.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/qitemselectionmodel.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qstyleoption.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/qlocale.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		D:/qt/6.5.3/mingw_64/include/QtGui/qvalidator.h \
+		D:/qt/6.5.3/mingw_64/include/QtCore/qregularexpression.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qslider.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qabstractslider.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qstyle.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtabbar.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtabwidget.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qrubberband.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qtreewidgetitemiterator.h \
+		ui_backend.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/qt/6.5.3/mingw_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\backend.o ..\..\backend.cpp
 
 debug/bank.o: ../../bank.cpp ../../bank.h \
