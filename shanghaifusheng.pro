@@ -62,7 +62,6 @@ FORMS += \
     backend.ui \
     bank.ui \
     connectus.ui \
-    eventwindow.ui \
     help.ui \
     hospital.ui \
     loading.ui \
