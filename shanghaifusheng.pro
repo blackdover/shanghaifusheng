@@ -31,7 +31,8 @@ SOURCES += \
     ranking.cpp \
     stdmessagebox.cpp \
     sudomodel.cpp \
-    uitest.cpp
+    uitest.cpp \
+    xorcore.cpp
 
 HEADERS += \
     backend.h \
@@ -55,7 +56,8 @@ HEADERS += \
     ranking.h \
     stdmessagebox.h \
     sudomodel.h \
-    uitest.h
+    uitest.h \
+    xorcore.h
 
 
 FORMS += \
