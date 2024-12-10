@@ -10,7 +10,7 @@ Post::Post(Player *player,QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("邮局");
-
+    setWindowIcon(QIcon(":/res/icon.png"));
     connect(ui->leaveButton, &QPushButton::clicked, this, &Post::on_leaveButton_clicked);
 }
 
@@ -54,6 +54,19 @@ void Post::on_payButton_clicked()
                 QMessageBox::information(this, "村长说", "剩下的别忘了还！");
             }
         }
+    }
+}
+
+
+void Post::on_lendButton_clicked()
+{
+    bool ok;
+    int amount = QInputDialog::getInt(this,"借款","您借多少钱？",0,0,99999999,1,&ok);
+    if (ok)
+    {
+        player->addGiveUpMoney(amount);
+        player->addMoney(amount);
+        QMessageBox::information(this,"村长","别忘了还我！");
     }
 }
 

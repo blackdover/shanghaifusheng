@@ -7,13 +7,13 @@
 // Constructor
 eventwindow::eventwindow(QWidget *parent)
     : QWidget(parent)
+    : QDialog(parent)
     , ui(new Ui::eventwindow)
 {
     ui->setupUi(this);
     setWindowTitle("全球新闻");
     setWindowIcon(QIcon(":/res/icon.png"));
-
-    // Initialize random events
+      
     events = {{"拼好饭牌脆皮鸡", {5, 30}},
               {"面向对象课本大受欢迎", {50, 100}},
               {"面向对象课本无人问津", {50, 100}},
@@ -24,6 +24,11 @@ eventwindow::eventwindow(QWidget *parent)
               {"曹县茅台", {10000, 15000}},
               {"冯诺依曼亲签", {20000, 40000}},
               {"特斯拉火箭牌汽车", {200000, 500000}}};
+      
+    if (eventManager.loadEventsFromFile(":/res/event.txt"))
+        events = eventManager.getAllEvents();
+    else
+        std::cerr << "加载事件失败！" << std::endl;
     connect(ui->OK, &QPushButton::clicked, this, &eventwindow::on_OK_clicked);
 }
 
@@ -34,15 +39,13 @@ eventwindow::~eventwindow()
 }
 
 //产生一个随机事件
-void eventwindow::triggerRandomEvent()
+RandomEvent* eventwindow::triggerRandomEvent()
 {
-    if (events.empty())return;
+    if (events.empty())return nullptr;
 
     int index = QRandomGenerator::global()->bounded(events.size());
-    QString des = QString::fromStdString(events[index].first); // Convert std::string to QString
-    int minPrice = events[index].second.first;
-    int maxPrice = events[index].second.second;
-    ui->description->setText(des);
+    ui->description->setText(events[index].getDescription());
+    return &events[index];
 }
 void eventwindow::on_OK_clicked()
 {

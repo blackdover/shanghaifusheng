@@ -23,6 +23,8 @@ private slots:
     void on_drawButton_clicked();
     void on_leaveButton_clicked();
 
+    void on_kidButton_clicked();
+
 private:
     Ui::Bank *ui;
     long long myCash;

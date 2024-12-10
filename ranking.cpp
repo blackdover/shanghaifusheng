@@ -78,7 +78,7 @@ Ranking::Ranking(QWidget *parent)
     std::vector<rankItem> rankItems = rankItemManager.getAllElements();
 
     std::sort(rankItems.begin(), rankItems.end(), [](const rankItem& a, const rankItem& b) {
-        return a.getMoney() > b.getMoney();
+        return (a.getMoney()*0.6+a.getHealth()*0.2+a.getFame()*0.2) > (b.getMoney()*0.6+b.getHealth()*0.2+b.getFame()*0.2);
     });
 
     int rank=1;

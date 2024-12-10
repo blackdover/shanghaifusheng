@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>240</width>
-    <height>368</height>
+    <height>403</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -64,7 +64,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>200</y>
+     <y>175</y>
      <width>231</width>
      <height>41</height>
     </rect>
@@ -77,6 +77,38 @@
    </property>
    <property name="text">
     <string>邮箱：blackdover@163.com</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>245</y>
+     <width>76</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>楷体</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>QQ二维码：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="qrcodeimg">
+   <property name="geometry">
+    <rect>
+     <x>85</x>
+     <y>245</y>
+     <width>140</width>
+     <height>140</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>二维码</string>
    </property>
   </widget>
  </widget>

@@ -20,6 +20,8 @@ private slots:
     void on_leaveButton_clicked();
     void on_payButton_clicked();
 
+    void on_lendButton_clicked();
+
 private:
     Ui::Post *ui;
     Player *player;

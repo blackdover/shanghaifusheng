@@ -20,6 +20,8 @@ QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
 }
+
+class start;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -75,6 +77,8 @@ private slots:
 
     void on_sudomodel_triggered();
 
+    void on_backtomain_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTreeWidget *itemWidget;
@@ -90,5 +94,6 @@ private:
     QMessageBox stdmessagebox;
     help *doc=nullptr;
     sudomodel *sudo=nullptr;
+    start *st=nullptr;
 };
 #endif // MAINWINDOW_H
