@@ -11,6 +11,7 @@ Hospital::Hospital(Player *player,QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("医院");
+    setWindowIcon(QIcon(":/res/icon.png"));
     connect(ui->cancelButton, &QPushButton::clicked, this, &Hospital::on_cancelButton_clicked);
 }
 
