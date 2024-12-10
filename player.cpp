@@ -4,9 +4,29 @@
 #include <QTextStream>
 #include<QString>
 #include<QStringList>
-
+#include<qfile.h>
 Player::Player()
-    : money(5000), bankMoney(0), giveUpMoney(5000), health(60), fame(60) ,bagsize(100),maxbagsize(100){}
+{
+
+    QFile file(":/res/player.txt");
+    if(!file.open(QIODevice::ReadOnly|QIODevice::Text))
+    {
+        qDebug()<<"无法打开player文件";
+        //用默认值
+        money = 5000;
+        bankMoney = 0;
+        giveUpMoney = 5000;
+        health = 60;
+        fame = 60;
+        bagsize = 100;
+        maxbagsize = 100;
+        return;
+    }
+    QTextStream in(&file);
+    in >> money >> bankMoney >> giveUpMoney >> health >> fame >> bagsize >> maxbagsize;
+
+    file.close();
+}
 
 
 long long Player::getMoney() const { return money; }

@@ -4,7 +4,7 @@
 #include <QVBoxLayout>
 #include <QDesktopServices>
 #include <QUrl>
-
+#include<QPixmap>
 connectUs::connectUs(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::connectUs)
@@ -15,6 +15,10 @@ connectUs::connectUs(QWidget *parent)
     ui->github->setOpenExternalLinks(true); // 点击时自动打开外部链接
     setWindowTitle("联系我们");
     setWindowIcon(QIcon(":/res/icon.png"));
+
+    QPixmap pixmap(":/res/qrcode");
+    ui->qrcodeimg->setPixmap(pixmap);
+    ui->qrcodeimg->setScaledContents(true);
 }
 
 connectUs::~connectUs()
