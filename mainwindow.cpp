@@ -358,25 +358,14 @@ void MainWindow::showGameOverMessage()
     settlement *se=new settlement(this);
     se->show();
 }
-//发生随机事件
 void MainWindow::randomevent()
 {
     int probability = QRandomGenerator::global()->bounded(100); //生成一个0到99的随机数
     if (probability <= 30)//30%概率触发随机事件
     {
         eventwindow *event = new eventwindow();  // 创建eventwindow实例
-        RandomEvent *rand = event->triggerRandomEvent();
-        refreshItemsInMarket(6,rand->getItemName());
-        QString itemName = rand->getItemName();
-        long long nowPrice = rand->getRandomPrice();
-        QTreeWidgetItem* treeItem = new QTreeWidgetItem();
-        treeItem->setText(0, itemName);
-        treeItem->setText(1, QString::number(nowPrice));
-        ui->itemWidget->addTopLevelItem(treeItem);
-        if(event->exec() == QDialog::Accepted)
-        {
-            event->show(); // 显示窗口
-        }
+        event->triggerRandomEvent();
+        event->show(); // 显示窗口
     }
 }
 void MainWindow::nextday()
