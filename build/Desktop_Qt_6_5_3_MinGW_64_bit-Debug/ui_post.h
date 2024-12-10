@@ -28,6 +28,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *payButton;
+    QSpacerItem *horizontalSpacer_4;
     QPushButton *lendButton;
     QSpacerItem *horizontalSpacer;
     QPushButton *leaveButton;
@@ -58,6 +59,10 @@ public:
         payButton->setObjectName("payButton");
 
         horizontalLayout->addWidget(payButton);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_4);
 
         lendButton = new QPushButton(layoutWidget);
         lendButton->setObjectName("lendButton");
