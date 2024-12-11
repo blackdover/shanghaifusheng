@@ -313,7 +313,7 @@ public:
         groupBox->raise();
         groupBox_2->raise();
         sell->raise();
-        layoutWidget1->raise();
+        layoutWidget->raise();
         daylabel->raise();
         buy->raise();
         itemWidget->raise();

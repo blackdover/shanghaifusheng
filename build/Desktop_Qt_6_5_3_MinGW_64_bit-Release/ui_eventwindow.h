@@ -27,17 +27,20 @@ public:
     {
         if (eventwindow->objectName().isEmpty())
             eventwindow->setObjectName("eventwindow");
-        eventwindow->resize(536, 163);
+        eventwindow->resize(426, 186);
+        QFont font;
+        font.setPointSize(12);
+        eventwindow->setFont(font);
         eventwindow->setMouseTracking(false);
         OK = new QPushButton(eventwindow);
         OK->setObjectName("OK");
-        OK->setGeometry(QRect(220, 120, 93, 28));
+        OK->setGeometry(QRect(165, 135, 93, 28));
         OK->setMouseTracking(false);
         description = new QLabel(eventwindow);
         description->setObjectName("description");
-        description->setGeometry(QRect(110, 40, 321, 41));
+        description->setGeometry(QRect(5, 35, 416, 81));
         description->setScaledContents(false);
-        description->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        description->setAlignment(Qt::AlignCenter);
 
         retranslateUi(eventwindow);
 
