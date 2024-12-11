@@ -19,7 +19,6 @@ eventwindow::eventwindow(QWidget *parent)
     connect(ui->OK, &QPushButton::clicked, this, &eventwindow::on_OK_clicked);
 }
 
-// Destructor
 eventwindow::~eventwindow()
 {
     delete ui;
@@ -34,7 +33,7 @@ RandomEvent* eventwindow::triggerRandomEvent()
         return nullptr;
     }
     int size = events.size();
-    // 确保 size 大于 0
+
     if (size <= 0) {
         ui->description->setText("无效的事件列表！");
         return nullptr;

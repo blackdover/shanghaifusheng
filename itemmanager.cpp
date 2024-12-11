@@ -25,7 +25,6 @@ bool ItemManager::loadItemsFromFile(const QString& filename) {
                 return false;
             }
         }
-
         // 从资源文件读取默认数据
         QFile resourceFile(":/res/items.txt");
         if (resourceFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -48,47 +47,37 @@ bool ItemManager::loadItemsFromFile(const QString& filename) {
             return false;
         }
     }
-
     // 现在尝试从工作目录下的 items.txt 加载数据
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "无法打开文件:" << filePath;
         return false;
     }
-
     QTextStream in(&file);
     items.clear(); // 清空现有的 items，以防重复加载
-
     while (!in.atEnd()) {
         QString line = in.readLine().trimmed();
         if (line.isEmpty()) {
             continue; // 跳过空行
         }
-
         QStringList parts = line.split(" ", Qt::SkipEmptyParts);
         if (parts.size() < 3) {
             qDebug() << "文件格式错误:" << line;
             continue;
         }
-
         QString name = parts[0];
         bool ok1, ok2;
         qint64 basePrice = parts[1].toLongLong(&ok1);
         qint64 priceFluctuation = parts[2].toLongLong(&ok2);
-
         if (!ok1 || !ok2) {
             qDebug() << "数值转换失败:" << line;
             continue;
         }
-
         items.emplace_back(name.toStdString(), basePrice, priceFluctuation);
     }
-
     file.close();
     qDebug() << "成功从" << filePath << "加载 items。";
     return true;
 }
-
-
 
 
 Item* ItemManager::getItemByName(const std::string& name) {
@@ -115,14 +104,12 @@ bool ItemManager::saveItemsToFile() {
         qDebug() << "无法打开文件进行写入:" << filePath;
         return false;
     }
-
     QTextStream out(&file);
     for (const auto& item : items) {
         out << QString::fromStdString(item.getName()) << " "
             << QString::number(item.getBasePrice()) << " "
             << QString::number(item.getPriceFluctuation()) << "\n";
     }
-
     file.close();
     qDebug() << "成功将 items 保存到" << filePath;
     return true;
@@ -141,7 +128,6 @@ bool ItemManager::addItem(const Item& item) {
             return false;
         }
     }
-
     items.push_back(item);
     if (!saveItemsToFile()) {
         qDebug() << "添加失败：无法保存到文件。";
@@ -149,7 +135,6 @@ bool ItemManager::addItem(const Item& item) {
         items.pop_back();
         return false;
     }
-
     qDebug() << "成功添加商品:" << QString::fromStdString(item.getName());
     return true;
 }
@@ -173,17 +158,14 @@ bool ItemManager::modifyItem(const std::string& oldName, const Item& newItem) {
             break;
         }
     }
-
     if (!found) {
         qDebug() << "修改失败：未找到商品:" << QString::fromStdString(oldName);
         return false;
     }
-
     if (!saveItemsToFile()) {
         qDebug() << "修改失败：无法保存到文件。";
         return false;
     }
-
     qDebug() << "成功修改商品:" << QString::fromStdString(oldName) << "到" << QString::fromStdString(newItem.getName());
     return true;
 }

@@ -65,10 +65,8 @@ MainWindow::MainWindow(QWidget *parent)
 //背包列宽
     bagWidget->header()->setSectionResizeMode(0, QHeaderView::Fixed);
     bagWidget->setColumnWidth(0, 105);
-
     bagWidget->header()->setSectionResizeMode(1, QHeaderView::Fixed);
     bagWidget->setColumnWidth(1, 60);
-
     bagWidget->header()->setSectionResizeMode(2, QHeaderView::Stretch);
 
 //商品栏列宽
@@ -102,36 +100,26 @@ void MainWindow::on_playermoney_overflow()
 }
 void MainWindow::refreshItemsInMarket(int count)
 {
-    ui->itemWidget->clear();
-
-    // if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
-    //     qDebug() << "Failed to load items from file. Using default items.";
-    // }
-
-    const auto& allItems = itemManager->getAllItems();
-
-    int displayCount = std::min(count, static_cast<int>(allItems.size()));
-
-    QVector<int> indices;
+    ui->itemWidget->clear();//清除原有的商品
+    const auto& allItems = itemManager->getAllItems();//从itemManager中拿取全部商品
+    int displayCount = std::min(count, static_cast<int>(allItems.size()));//计算抽取的数量
+    QVector<int> indices;//索引数组
     for (long long unsigned int i = 0; i < allItems.size(); ++i) {
-        indices.append(i);
+        indices.append(i);//将索引加入索引数组
     }
-
-    std::random_device rd;
-    std::mt19937 g(rd());
-
-    std::shuffle(indices.begin(), indices.end(), g);
+    std::random_device rd;//定义随机数
+    std::mt19937 g(rd());//设定随机种子
+    std::shuffle(indices.begin(), indices.end(), g);//抽取索引
 
     for (int i = 0; i < displayCount; ++i) {
         const auto& item = allItems[indices[i]];
-
         QString itemName = QString::fromStdString(item.getName());
         long long nowPrice = item.generatePrice();
-
+        //new一个QTreeWidgetItem，然后用对应的商品的内容设置其内容
         QTreeWidgetItem* treeItem = new QTreeWidgetItem();
         treeItem->setText(0, itemName);
         treeItem->setText(1, QString::number(nowPrice));
-
+        //将抽到的索引对应的物品加入显示栏
         ui->itemWidget->addTopLevelItem(treeItem);
     }
 }
@@ -139,42 +127,28 @@ void MainWindow::refreshItemsInMarket(int count)
 void MainWindow::refreshItemsInMarket(int count, const QString& excludeName)
 {
     ui->itemWidget->clear();
-
-    // if (!itemManager.loadItemsFromFile(":/res/items.txt")) {
-    //     qDebug() << "Failed to load items from file. Using default items.";
-    // }
-
     const auto& allItems = itemManager->getAllItems();
-
     QVector<Item> filteredItems;
     for (const auto& item : allItems) {
         if (QString::fromStdString(item.getName()) != excludeName) {
             filteredItems.append(item);
         }
     }
-
     int displayCount = std::min(count, static_cast<int>(filteredItems.size()));
-
     QVector<int> indices;
     for (int i = 0; i < filteredItems.size(); ++i) {
         indices.append(i);
     }
-
     std::random_device rd;
     std::mt19937 g(rd());
-
     std::shuffle(indices.begin(), indices.end(), g);
-
     for (int i = 0; i < displayCount; ++i) {
         const auto& item = filteredItems[indices[i]];
-
         QString itemName = QString::fromStdString(item.getName());
         long long nowPrice = item.generatePrice();
-
         QTreeWidgetItem* treeItem = new QTreeWidgetItem();
         treeItem->setText(0, itemName);
         treeItem->setText(1, QString::number(nowPrice));
-
         ui->itemWidget->addTopLevelItem(treeItem);
     }
 }
@@ -183,24 +157,19 @@ void MainWindow::refreshItemsInMarket(int count, const QString& excludeName)
 void MainWindow::updateBagSpaceDisplay()
 {
     // 计算比例
-    int bagSize = player->getBagSize();
-    int maxBagSize = player->getMaxBagSize();
-
+    int bagSize = player->getBagSize();//背包的剩余空间
+    int maxBagSize = player->getMaxBagSize();//背包的最大空间
     // 更新 bagWidget的第三列标题
     ui->bagWidget->headerItem()->setText(2, QString("数量:%1/%2").arg(maxBagSize-bagSize).arg(maxBagSize));
 }
 
 void MainWindow::addItemToBag(QString itemName,long long nowPrice,int quantity)
 {
-    QTreeWidgetItem* bagItem = new QTreeWidgetItem();
-
-    bagItem->setText(0, itemName);
-
-    bagItem->setText(1, QString::number(nowPrice));
-
-    bagItem->setText(2, QString::number(quantity));
-
-    ui->bagWidget->addTopLevelItem(bagItem);
+    QTreeWidgetItem* bagItem = new QTreeWidgetItem();//定义一个bagItem型的指针
+    bagItem->setText(0, itemName);//背包第一列
+    bagItem->setText(1, QString::number(nowPrice));//背包第二列
+    bagItem->setText(2, QString::number(quantity));//背包第三列
+    ui->bagWidget->addTopLevelItem(bagItem);//item加入背包widget
 }
 void MainWindow::on_buy_clicked()
 {
@@ -211,53 +180,38 @@ void MainWindow::on_buy_clicked()
     }
     QString nowName=nowSelect->text(0);
     long long nowPrice=nowSelect->text(1).toLongLong();
-
     // 检查总金额是否足够购买 1 个商品
     if (player->getMoney() + player->getBankMoney() < nowPrice) {
         QMessageBox::warning(this, "错误", "没有足够的钱！");
         return;
     }
-
-    // 如果现金不够但银行里的足够购买
+    // 如果现金不够但银行里的钱足够购买
     if (player->getBankMoney() >= nowPrice&&player->getMoney()<nowPrice) {
         QMessageBox::warning(this, "提示", "银行里的钱足够购买，请去取钱！");
         return;
     }
-
-    if(player->getBagSize()==0)
+    if(player->getBagSize()==0)//若背包剩余空间为0
     {
         QMessageBox::warning(this, "提示", "你没有足够的背包空间");
         return;
     }
     // 弹出输入框，默认值为最多可购买数量
     int maxQuantity = std::min(player->getMoney() / nowPrice,player->getBagSize()); // 玩家最多可买的数量
-    bool ok;
+    bool ok;//用于判断买入是否成功
     int quantity = QInputDialog::getInt(this, "购买商品",
                                         QString("请输入购买数量（最多 %1 个）：").arg(maxQuantity),
-                                        maxQuantity, 1, maxQuantity, 1, &ok);
-
+                                        maxQuantity, 1, maxQuantity, 1, &ok);//默认数量、最低数量、最高数量
     if (!ok || quantity <= 0) {
         return;
     }
-    player->setBagSize(player->getBagSize()-quantity);
+    player->setBagSize(player->getBagSize()-quantity);//减少剩余空间容量
     // 更新到 bagwidget
-    addItemToBag(nowName, nowPrice, quantity);
-
+    addItemToBag(nowName, nowPrice, quantity);//将买入的商品添加入背包
     // 扣除玩家的钱
     player->reduceMoney( nowPrice * quantity);
     updateBagSpaceDisplay();
-    updatePlayerUI();
-
-    // ui->playermoney->display(QString::number(player->getMoney()));
-    // ui->playerbankmoney->display(QString::number(player->getBankMoney()));
-    // ui->playergiveupmoney->display(QString::number(player->getGiveUpMoney()));
-    // ui->playerhealth->display(QString::number(player->getHealth()));
-    // ui->playerfame->display(QString::number(player->getFame()));
-
-
-    // stdmessagebox::information(this, "成功", QString("成功购买 %1 个 %2！").arg(quantity).arg(nowName));
+    // updatePlayerUI();
 }
-
 
 void MainWindow::on_sell_clicked()
 {
@@ -267,11 +221,9 @@ void MainWindow::on_sell_clicked()
         QMessageBox::warning(this, "警告", "请选择一个物品！");
         return;
     }
-
     QString itemName = selectedItem->text(0);
     // long long ownedPrice = selectedItem->text(1).toLongLong();
     int ownedQuantity = selectedItem->text(2).toInt();
-
     // 弹出输入框，默认值为拥有的最大数量
     bool ok;
     int sellQuantity = QInputDialog::getInt(this, "卖出商品",
@@ -281,18 +233,15 @@ void MainWindow::on_sell_clicked()
     if (!ok) {
         return;
     }
-
     // 检查卖出数量是否合理
     if (sellQuantity <= 0) {
         QMessageBox::warning(this, "错误", "卖出数量不能为负数或零！");
         return;
     }
-
     if (sellQuantity > ownedQuantity) {
         QMessageBox::warning(this, "错误", "卖出的数量不能超过拥有的数量！");
         return;
     }
-
     // 检查 itemWidget 是否有相应的收购物品
     QTreeWidgetItem *buyerItem = nullptr;
     for (int i = 0; i < ui->itemWidget->topLevelItemCount(); ++i) {
@@ -302,15 +251,12 @@ void MainWindow::on_sell_clicked()
             break;
         }
     }
-
     if (!buyerItem) {
         QMessageBox::information(this, "提示", "暂时没有人收购呢！");
         return;
     }
-
     // 获取当前的价格
     long long sellPrice = buyerItem->text(1).toLongLong();
-
     // 增加玩家的钱
     player->addMoney(sellQuantity * sellPrice);
     player->setBagSize(player->getBagSize()+sellQuantity);
@@ -323,12 +269,9 @@ void MainWindow::on_sell_clicked()
         // 如果卖光了，删除该行
         delete selectedItem;
     }
-
     // 更新玩家的 UI
     ui->playermoney->display(QString::number(player->getMoney()));
     updateBagSpaceDisplay();
-    // stdmessagebox::information(this, "成功",
-    //                          QString("成功卖出 %1 个 %2，获得 %3 金币！").arg(sellQuantity).arg(itemName).arg(sellQuantity * sellPrice));
 }
 void MainWindow::moreneedmoney()
 {

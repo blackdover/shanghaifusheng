@@ -3,25 +3,22 @@
 
 #include <string>
 #include <QtGlobal>
-class AdditionalEffect; // 附加效果的前向声明
+// class AdditionalEffect; // 附加效果的前向声明
 
 class Item {
 private:
-    std::string name;          // 物品名称
+    std::string name;       // 物品名称
     qint64 basePrice;       // 基础价格
-    qint64 priceFluctuation;// 波动价格范围
-    AdditionalEffect* effect;  // 附加效果指针
+    qint64 priceFluctuation;// 波动价格
 
 public:
-    Item(const std::string& name, long long basePrice, long long priceFluctuation, AdditionalEffect* effect = nullptr);
+    Item(const std::string& name, qint64 basePrice,qint64 priceFluctuation);
 
-    std::string getName() const;
-    long long getBasePrice() const;
-    long long getPriceFluctuation() const;//波动范围
-    long long generatePrice() const;
+    std::string getName() const;//获取物品名
+    qint64 getBasePrice() const;//获取基础价格
+    qint64 getPriceFluctuation() const;//获取波动价格
+    qint64 generatePrice() const;//生成价格
 
-    AdditionalEffect* getEffect() const;
-    void setEffect(AdditionalEffect* newEffect);
 };
 
 #endif // ITEM_H
