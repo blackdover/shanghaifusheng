@@ -87,6 +87,7 @@ void settlement::on_leave_clicked()
 
 void settlement::setTitle(Player *player)
 {
+    money = player->getMoney()+player->getBankMoney()-player->getGiveUpMoney();
     // 定义金钱等级
     enum MoneyCategory { DEEPLY_IN_DEBT, IN_DEBT, VERY_POOR, POOR, COMFORTABLE, WEALTHY, SUPER_RICH };
     MoneyCategory moneyCat;

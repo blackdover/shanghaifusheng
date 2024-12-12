@@ -12,6 +12,7 @@
 ItemManager::ItemManager() {}
 
 bool ItemManager::loadItemsFromFile(const QString& filename) {
+    QString unused=filename;
     QString filePath = QCoreApplication::applicationDirPath() + "/res/items.txt";
     QFile file(filePath);
     // 检查文件是否存在
