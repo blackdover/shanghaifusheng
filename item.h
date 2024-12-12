@@ -3,7 +3,6 @@
 
 #include <string>
 #include <QtGlobal>
-// class AdditionalEffect; // 附加效果的前向声明
 
 class Item {
 private:

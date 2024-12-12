@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include<string.h>
-#include<player.h>
+#include"player.h"
 #include <QTreeWidgetItem>
 class start;
 namespace Ui {

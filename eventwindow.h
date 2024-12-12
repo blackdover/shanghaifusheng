@@ -2,7 +2,7 @@
 #define EVENTWINDOW_H
 
 #include <QDialog>
-#include <eventmanager.h>
+#include "eventmanager.h"
 
 namespace Ui {
 class eventwindow;

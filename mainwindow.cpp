@@ -14,7 +14,6 @@
 #include <algorithm>
 #include <random>
 #include "ranking.h"
-#include"uitest.h"
 #include"settlement.h"
 #include"stdmessagebox.h"
 #include "eventwindow.h"
