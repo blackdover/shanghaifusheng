@@ -1,7 +1,7 @@
 #include "backend.h"
 #include "ui_backend.h"
 #include<qmessagebox.h>
-
+#include<QDebug>
 backend::backend(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::backend)
@@ -11,13 +11,10 @@ backend::backend(QWidget *parent)
     this->setWindowTitle("后台");
     // ui->itemWidget->header()->setSectionResizeMode(QHeaderView::Stretch);
     itemWidget=ui->itemWidget;
-
     itemWidget->header()->setSectionResizeMode(0, QHeaderView::Fixed);
     itemWidget->setColumnWidth(0, 130);
-
     itemWidget->header()->setSectionResizeMode(1, QHeaderView::Stretch);
     // itemWidget->setColumnWidth(1, 60);
-
     itemWidget->header()->setSectionResizeMode(2, QHeaderView::Stretch);
 
 
@@ -36,8 +33,23 @@ backend::~backend()
     delete ui;
 }
 
+// void backend::on_coreconfirmbutton_clicked()
+// {
+//     qDebug()<<"cliked";
+//     if(ui->coreedit->text()=="12345")
+//     {
+//         ui->loginwidget->close();
+//     }
+//     else
+//     {
+//         QMessageBox::information(this,"离开这！","你没有进入这里的权限",QMessageBox::Ok);
+//         this->close();
+//     }
+// }
+
 void backend::on_confirmbutton_clicked()
 {
+    qDebug()<<"cliked";
     if(ui->coreedit->text()=="12345")
     {
         ui->loginwidget->close();
@@ -67,46 +79,39 @@ void backend::addItemToTree(const Item& item)
 }
 void backend::on_addconfirm_clicked()
 {
-    QString name = ui->newitemname->text().trimmed();
-    QString baseStr = ui->newitembase->text().trimmed();
-    QString flowStr = ui->newitemflow->text().trimmed();
-
+    QString name = ui->newitemname->text().trimmed();//获取lineEdit的内容
+    QString baseStr = ui->newitembase->text().trimmed();//获取lineEdit的内容
+    QString flowStr = ui->newitemflow->text().trimmed();//获取lineEdit的内容
     if (name.isEmpty() || baseStr.isEmpty() || flowStr.isEmpty()) {
         QMessageBox::warning(this, "输入错误", "请填写所有字段！");
         return;
-    }
-
+    }//检查是否三个都有内容
     bool ok1, ok2;
-    qint64 basePrice = baseStr.toLongLong(&ok1);
-    qint64 flowPrice = flowStr.toLongLong(&ok2);
-
+    qint64 basePrice = baseStr.toLongLong(&ok1);//将字符串转为数字
+    qint64 flowPrice = flowStr.toLongLong(&ok2);//将字符串转为数字
     if (!ok1 || !ok2) {
         QMessageBox::warning(this, "输入错误", "基准价格和浮动价格必须是有效的数字！");
         return;
     }
-
     // 确认
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "确认添加", "确定要添加这个商品吗？",
                                   QMessageBox::Yes | QMessageBox::No);
     if (reply != QMessageBox::Yes)
-        return;
-
-    Item newItem(name.toStdString(), basePrice, flowPrice);
-
+        return;//若为NO或其他操作，结束函数
+    Item newItem(name.toStdString(), basePrice, flowPrice);//构造一个新Item用于后续添加
     // 添加到ItemManager
     if (!itemManager.addItem(newItem)) {
         QMessageBox::critical(this, "添加失败", "无法将商品添加到文件中。可能是名称重复。");
         return;
+        //addItem会返回一个bool值表示添加的成功或失败
     }
     //添加到显示
     addItemToTree(newItem);
-
     // 清空输入
     ui->newitemname->clear();
     ui->newitembase->clear();
     ui->newitemflow->clear();
-
     QMessageBox::information(this, "添加成功", "商品已成功添加！");
 }
 
@@ -153,7 +158,6 @@ void backend::on_editconfirm_clicked()
         QMessageBox::warning(this, "选择错误", "请先选择一个商品！");
         return;
     }
-
     QTreeWidgetItem* selectedItem = selectedItems.first();
     QString oldName = selectedItem->text(0);
     QString newName = ui->nameedit->text().trimmed();
@@ -164,42 +168,34 @@ void backend::on_editconfirm_clicked()
         QMessageBox::warning(this, "输入错误", "请填写所有字段！");
         return;
     }
-
     bool ok1, ok2;
     qint64 basePrice = baseStr.toLongLong(&ok1);
     qint64 flowPrice = flowStr.toLongLong(&ok2);
-
     if (!ok1 || !ok2) {
         QMessageBox::warning(this, "输入错误", "基准价格和浮动价格必须是有效的数字！");
         return;
     }
-
     // 确认
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "确认修改", "确定要修改这个商品吗？",
                                   QMessageBox::Yes | QMessageBox::No);
     if (reply != QMessageBox::Yes)
         return;
-
     // 更新后的Item
     Item updatedItem(newName.toStdString(), basePrice, flowPrice);
-
     // 修改 ItemManager
     if (!itemManager.modifyItem(oldName.toStdString(), updatedItem)) {
         QMessageBox::critical(this, "修改失败", "无法修改商品。可能是名称重复。");
         return;
     }
-
     // 更新
     selectedItem->setText(0, newName);
     selectedItem->setText(1, QString::number(basePrice));
     selectedItem->setText(2, QString::number(flowPrice));
-
     // 清空编辑框
     ui->nameedit->clear();
     ui->baseedit->clear();
     ui->flowedit->clear();
-
     QMessageBox::information(this, "修改成功", "商品已成功修改！");
 }
 
@@ -213,3 +209,4 @@ void backend::onItemSelected(QTreeWidgetItem* item)
     ui->baseedit->setText(item->text(1));
     ui->flowedit->setText(item->text(2));
 }
+

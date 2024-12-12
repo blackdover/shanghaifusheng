@@ -14,7 +14,6 @@ ItemManager::ItemManager() {}
 bool ItemManager::loadItemsFromFile(const QString& filename) {
     QString filePath = QCoreApplication::applicationDirPath() + "/res/items.txt";
     QFile file(filePath);
-
     // 检查文件是否存在
     if (!file.exists()) {
         // 文件不存在，创建目录
@@ -31,7 +30,6 @@ bool ItemManager::loadItemsFromFile(const QString& filename) {
             QTextStream in(&resourceFile);
             QString defaultData = in.readAll();
             resourceFile.close();
-
             // 将默认数据写入工作目录下的 items.txt
             if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
                 QTextStream out(&file);
@@ -128,11 +126,11 @@ bool ItemManager::addItem(const Item& item) {
             return false;
         }
     }
-    items.push_back(item);
-    if (!saveItemsToFile()) {
+    items.push_back(item);//加入items数组
+    if (!saveItemsToFile()) {//调用保存函数
         qDebug() << "添加失败：无法保存到文件。";
         // 如果保存失败，可以选择从 items 中移除刚添加的物品
-        items.pop_back();
+        items.pop_back();//保存失败，移出添加
         return false;
     }
     qDebug() << "成功添加商品:" << QString::fromStdString(item.getName());
@@ -140,51 +138,47 @@ bool ItemManager::addItem(const Item& item) {
 }
 
 bool ItemManager::modifyItem(const std::string& oldName, const Item& newItem) {
-    bool found = false;
-    for (auto& item : items) {
-        if (item.getName() == oldName) {
-            // 检查新名称是否与其他物品重复（如果名称有变化）
+    bool found = false; // 标记是否找到要修改的商品
+    for (auto& item : items) { // 遍历所有商品
+        if (item.getName() == oldName) { // 找到旧名称对应的商品
+            // 检查新名称是否与其他商品重复（如果名称有变化）
             if (newItem.getName() != oldName) {
-                for (const auto& existingItem : items) {
-                    if (existingItem.getName() == newItem.getName()) {
+                for (const auto& existingItem : items) { // 遍历所有商品
+                    if (existingItem.getName() == newItem.getName()) { // 发现重复名称
                         qDebug() << "修改失败：新商品名称与现有商品重复:" << QString::fromStdString(newItem.getName());
-                        return false;
+                        return false; // 返回失败
                     }
                 }
             }
-
-            item = newItem;
-            found = true;
-            break;
+            item = newItem; // 更新商品信息
+            found = true; // 设置找到标志
+            break; // 跳出循环
         }
     }
-    if (!found) {
+    if (!found) { // 没有找到要修改的商品
         qDebug() << "修改失败：未找到商品:" << QString::fromStdString(oldName);
-        return false;
+        return false; // 返回失败
     }
-    if (!saveItemsToFile()) {
+    if (!saveItemsToFile()) { // 保存数据到文件
         qDebug() << "修改失败：无法保存到文件。";
-        return false;
+        return false; // 返回失败
     }
     qDebug() << "成功修改商品:" << QString::fromStdString(oldName) << "到" << QString::fromStdString(newItem.getName());
-    return true;
+    return true; // 返回成功
 }
 
 bool ItemManager::deleteItem(const std::string& name) {
     auto it = std::remove_if(items.begin(), items.end(),
-                             [&](const Item& item) { return item.getName() == name; });
-    if (it == items.end()) {
+                             [&](const Item& item) { return item.getName() == name; }); // 移除所有名称为name的商品
+    if (it == items.end()) { // 没有找到要删除的商品
         qDebug() << "删除失败：未找到商品:" << QString::fromStdString(name);
-        return false;
+        return false; // 返回失败
     }
-
-    items.erase(it, items.end());
-
-    if (!saveItemsToFile()) {
+    items.erase(it, items.end()); // 删除商品
+    if (!saveItemsToFile()) { // 保存数据到文件
         qDebug() << "删除失败：无法保存到文件。";
-        return false;
+        return false; // 返回失败
     }
-
     qDebug() << "成功删除商品:" << QString::fromStdString(name);
-    return true;
+    return true; // 返回成功
 }

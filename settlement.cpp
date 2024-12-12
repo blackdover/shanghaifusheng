@@ -14,6 +14,7 @@ settlement::settlement(MainWindow *main,QWidget *parent)
     inputName();
 
     Player *p=mainwindow->getPlayer();
+
     money = p->getMoney()+p->getBankMoney()-p->getGiveUpMoney();
     health=p->getHealth();
     fame=p->getFame();
@@ -54,20 +55,16 @@ void settlement::scoreAdd()
 {
     QString appDir = QCoreApplication::applicationDirPath();
     QString filePath = QDir(appDir).filePath("res/score.txt");
-
     qDebug() << "文件路径：" << filePath;  // 输出文件路径以调试
-
     QFile file(filePath);
     if (!file.open(QIODevice::Append | QIODevice::Text)) {
         qWarning() << "无法打开文件：" << filePath;
         qWarning() << "错误原因：" << file.errorString();
         return;
     }
-
     QTextStream out(&file);
     out << name << " " << money << " " << health << " " << fame << " " << title << "\n";
     file.close();
-
     qDebug() << "数据已成功添加到文件：" << filePath;
 }
 

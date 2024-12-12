@@ -22,6 +22,8 @@ private slots:
     void on_deleteconfirm_clicked();
     void on_editconfirm_clicked();
 
+    // void on_coreconfirmbutton_clicked();
+
 private:
     Ui::backend *ui;
 

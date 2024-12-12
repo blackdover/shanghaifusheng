@@ -8,10 +8,6 @@ loading::loading(QWidget *parent)
 
 {
     ui->setupUi(this);
-    // connect(ui->begin,&QPushButton::clicked,this,&loading::on_begin_clicked);
-    //connect(ui->begin, &QPushButton::clicked, this, &Player::setPlayerName(name));
-    // this->setMaximumSize(420,580);
-    // this->setMinimumSize(420,580);
     this->setWindowTitle("背景故事");
     setWindowIcon(QIcon(":/res/icon.png"));
 }
@@ -23,8 +19,6 @@ loading::~loading()
 
 void loading::on_begin_clicked()
 {
-
-
     if(!mainwindow)
     {
         mainwindow=new MainWindow();

@@ -47,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     itemWidget = ui->itemWidget;
     bagWidget = ui->bagWidget;
-
+    //连接 player对象,连接到其信号函数，
     connect(player, &Player::moneyChanged, this, &MainWindow::updatePlayerUI);
     connect(player, &Player::bankMoneyChanged, this, &MainWindow::updatePlayerUI);
     connect(player, &Player::giveUpMoneyChanged, this, &MainWindow::updatePlayerUI);
@@ -204,13 +204,10 @@ void MainWindow::on_buy_clicked()
     if (!ok || quantity <= 0) {
         return;
     }
-    player->setBagSize(player->getBagSize()-quantity);//减少剩余空间容量
-    // 更新到 bagwidget
     addItemToBag(nowName, nowPrice, quantity);//将买入的商品添加入背包
-    // 扣除玩家的钱
-    player->reduceMoney( nowPrice * quantity);
-    updateBagSpaceDisplay();
-    // updatePlayerUI();
+    player->reduceMoney( nowPrice * quantity);// 扣除玩家的钱
+    player->setBagSize(player->getBagSize()-quantity);//减少背包容量
+    updateBagSpaceDisplay();//更新背包大小
 }
 
 void MainWindow::on_sell_clicked()
@@ -222,14 +219,12 @@ void MainWindow::on_sell_clicked()
         return;
     }
     QString itemName = selectedItem->text(0);
-    // long long ownedPrice = selectedItem->text(1).toLongLong();
     int ownedQuantity = selectedItem->text(2).toInt();
     // 弹出输入框，默认值为拥有的最大数量
     bool ok;
     int sellQuantity = QInputDialog::getInt(this, "卖出商品",
                                             QString("请输入卖出数量（最多 %1 个）：").arg(ownedQuantity),
                                             ownedQuantity, 1, ownedQuantity, 1, &ok);
-
     if (!ok) {
         return;
     }
@@ -269,8 +264,6 @@ void MainWindow::on_sell_clicked()
         // 如果卖光了，删除该行
         delete selectedItem;
     }
-    // 更新玩家的 UI
-    ui->playermoney->display(QString::number(player->getMoney()));
     updateBagSpaceDisplay();
 }
 void MainWindow::moreneedmoney()
@@ -504,16 +497,10 @@ void MainWindow::on_newgame_triggered()
     this->close();
 }
 
-class event//随机事件类
-{
-
-};
-
 // void MainWindow::on_addmoney_clicked()
 // {
 //         player->addMoney(1000000);
 // }
-
 
 void MainWindow::on_seehelp_triggered()
 {

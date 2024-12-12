@@ -11,6 +11,7 @@ start::start(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("上海浮生记");
+    setWindowIcon(QIcon(":/res/icon.png"));
 }
 
 start::~start()
