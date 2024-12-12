@@ -30,8 +30,7 @@ SOURCES += \
     start.cpp \
     ranking.cpp \
     stdmessagebox.cpp \
-    sudomodel.cpp \
-    uitest.cpp
+    sudomodel.cpp
 
 HEADERS += \
     backend.h \
@@ -54,8 +53,7 @@ HEADERS += \
     start.h \
     ranking.h \
     stdmessagebox.h \
-    sudomodel.h \
-    uitest.h
+    sudomodel.h
 
 
 FORMS += \
@@ -72,8 +70,7 @@ FORMS += \
     settlement.ui \
     start.ui \
     ranking.ui \
-    sudomodel.ui \
-    uitest.ui
+    sudomodel.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

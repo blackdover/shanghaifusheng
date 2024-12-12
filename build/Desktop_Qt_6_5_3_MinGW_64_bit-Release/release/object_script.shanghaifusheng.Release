@@ -20,7 +20,6 @@ release/start.o
 release/ranking.o
 release/stdmessagebox.o
 release/sudomodel.o
-release/uitest.o
 release/qrc_txtResource.o
 release/moc_backend.o
 release/moc_bank.o
@@ -37,4 +36,3 @@ release/moc_settlement.o
 release/moc_start.o
 release/moc_ranking.o
 release/moc_sudomodel.o
-release/moc_uitest.o
